@@ -1,0 +1,6 @@
+
+
+class food {
+	field int x, y; //location of the food for the snake
+
+}
