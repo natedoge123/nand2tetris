@@ -2,6 +2,7 @@ import re
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
+
 def token_string(s):
     token_items = []
     word = ''
@@ -83,31 +84,63 @@ def tokenizer(lst):
     return merged
 
 def xmlToken(lst):
-    keyword_list = ['class', 'constructor', 'function', 'method', 'field', 'static', 'var', 'int', 'char', 'boolean', 'void', 'true', 'false', 'null', 'this', 'let', 'do', 'if', 'else', 'while', 'return']
-    symbol_list = ['{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*''/', '&', '|', '<', '>', '=', '~']
+    keyword_list = ['class', 'constructor', 'function'
+                    , 'method', 'field', 'static', 'var'
+                    , 'int', 'char', 'boolean', 'void', 'true'
+                    , 'false', 'null', 'this', 'let', 'do'
+                    , 'if', 'else', 'while', 'return']
+    symbol_list = ['{', '}', '(', ')', '[', ']', '.'
+                   , ',', ';', '+', '-', '*', '/', '&'
+                   , '|', '<', '>', '=', '~']
 
-    root = ET.Element('token')
+    root = ET.Element("token")
     for item in lst:
         if item in keyword_list:
             temp = ET.SubElement(root, 'keyword')
             temp.text = item
+
         elif item in symbol_list:
+            item_replace = symbolReplace(item)
             temp = ET.SubElement(root, 'symbol')
-            temp.text = item
+            temp.text = item_replace
+
         elif item.isnumeric():
             temp = ET.SubElement(root, 'integerConstant')
             temp.text = item
+
         elif (item[0].isnumeric() != True) and (' ' not in item):
             temp = ET.SubElement(root, 'identifier')
             temp.text = item
+
         elif (item[0].isnumeric() != True) and (' ' in item):
             temp = ET.SubElement(root, 'stringConstant')
             temp.text = item
 
-    return(xmlIndent(root))
+            xmlPrint(root)
+    return(root)
 
+def symbolReplace(item):
+        match item:
+            case "<":
+                item = "&lt"
+                return item
 
-def xmlIndent(xml):
+            case ">":
+                item = "&gt"
+                return item
+
+            case '"':
+                item = "&quot"
+                return item
+
+            case '&':
+                item = "&amp"
+                return item
+            
+            case _:
+                return item
+
+def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
     indented = minidom.parseString(long_string)
     return indented.toprettyxml(indent="    ")
