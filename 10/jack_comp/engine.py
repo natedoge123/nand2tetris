@@ -1,36 +1,40 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
-def runEngine(xml): #takes tokenized xml tree and gives foramtted one
+def run(xml): #takes tokenized xml tree and gives foramtted one
     new_xml_tree = ET.Element('class')
-    programStructure(xml)
+
+    for i, elem in enumerate(xml):
+
+        if elem.tag == 'keyword' and elem.text == 'class':
+            temp = ET.SubElement(new_xml_tree, elem.tag)
+            temp.text = elem.text
+            
+            temp1 = ET.SubElement(new_xml_tree, elem[i+1].tag)
+            temp1.text = elem.text
+
 
 
     return new_xml_tree
 
-def programStructure(xml):
-    program_struct_counts = programStructureCounter(xml)
 
-    return program_struct_counts
+def addParentToTag(root, tag, new_parent):
+    elem_to_move = root.findall(tag)
 
-def programStructureCounter(xml):
-    static_list = []
-    field_list = []
-
-    for elem in xml:
-        if (elem.text == 'static'):
-            static_list.append(elem.text)
-
-        if (elem.text == 'field'):
-            field_list.append(elem.text)
+    if not elem_to_move:
+        return
     
-    print ([static_list, field_list])
-    return ([static_list, field_list])
+    new_parent = ET.Element(new_parent)
+
+    root.append(new_parent)
+
+    for elem in elem_to_move:
+        root.remote(elem)
+
 
 
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
     indented = minidom.parseString(long_string)
     return indented.toprettyxml(indent="    ")
-
 

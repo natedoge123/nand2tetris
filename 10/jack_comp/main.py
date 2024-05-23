@@ -18,9 +18,10 @@ for file in file_list:
     tokenized = (myToken.tokenizer(file_string))
     #print(tokenized)
     xmled = myToken.xmlToken(tokenized)
+    print(myToken.xmlPrint(xmled))
 
     #   Format the tokenized xml to the correcto output
-    formatted_xml = engine.runEngine(xmled)
+    formatted_xml = engine.run(xmled)
     print(formatted_xml)
 
 
