@@ -3,14 +3,22 @@ from xml.dom import minidom
 
 def run(xml): #takes tokenized xml tree and gives foramtted one
     new_xml_tree = ET.Element('class')
-    count_para = 0
-    count_braces = 0
-    count_bracket = 0
+    counters = [0,0,0,0] # ( { [ ;
 
     for elem in xml:
 
         if elem.text in ['static', 'field']:
+            print("static or field")
             sub_routine = ET.SubElement(new_xml_tree, 'classVarDec')
+            for elem in xml:
+
+                temp = ET.SubElement(sub_routine, elem.tag)
+                temp.text = elem.text
+                print(ET.tostring(temp))
+
+                if elem.text == ";":
+                    counters[3] += 1
+                    break
 
         elif elem.text in ['constructor', 'function', 'method']:
             sub_routine = ET.SubElement(new_xml_tree, 'subroutineDec')
@@ -43,18 +51,9 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
 
         else:
 
-            if elem.text == "(": count_para += 1
-            if elem.text == "{": count_braces += 1
-            if elem.text == "[": count_para += 1
-
-            if elem.text == ")": count_para -= 1
-            if elem.text == "}": count_braces -= 1
-            if elem.text == "]": count_para -= 1
-
-            print('cringe')
+            print(counters)
 
     return xmlPrint(new_xml_tree)
-
 
 def addParentToTag(root, tag, new_parent):
     elem_to_move = root.findall(tag)
@@ -70,7 +69,19 @@ def addParentToTag(root, tag, new_parent):
         root.remote(elem)
 
 
+def symbolCount(counter, symbol):
 
+    if symbol == "(": counter[0] += 1
+    if symbol == "{": counter[1] += 1
+    if symbol == "[": counter[2] += 1
+    if symbol == ";": counter[3] += 1
+
+    if symbol == ")": counter[0] -= 1
+    if symbol == "}": counter[1] -= 1
+    if symbol == "]": counter[2] -= 1
+
+    return counter
+    
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
     indented = minidom.parseString(long_string)

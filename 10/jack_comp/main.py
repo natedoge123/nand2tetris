@@ -26,7 +26,7 @@ for file in file_list:
 
 
     #   Save the files
-    write_name = sys.argv[1] + "/" +file_name + "TT"
+    write_name = sys.argv[1] + "/" + file_name + "TT"
     files.write_file(str(xmled), write_name, 'xml')
 
 
