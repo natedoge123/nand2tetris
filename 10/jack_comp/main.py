@@ -18,7 +18,6 @@ for file in file_list:
     tokenized = (myToken.tokenizer(file_string))
     #print(tokenized)
     xmled = myToken.xmlToken(tokenized)
-    print(myToken.xmlPrint(xmled))
 
     #   Format the tokenized xml to the correcto output
     formatted_xml = engine.run(xmled)
@@ -26,7 +25,8 @@ for file in file_list:
 
 
     #   Save the files
-    write_name = sys.argv[1] + "/" + file_name + "TT"
-    files.write_file(str(xmled), write_name, 'xml')
+    write_name = sys.argv[1] + "/" + file_name + "Token"
+    files.write_file(myToken.xmlPrint(xmled), write_name, 'xml')
 
-
+    write_name = sys.argv[1] + "/" + file_name + "Class"
+    files.write_file(str(formatted_xml), write_name, 'xml')

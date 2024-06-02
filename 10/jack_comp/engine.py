@@ -3,56 +3,76 @@ from xml.dom import minidom
 
 def run(xml): #takes tokenized xml tree and gives foramtted one
     new_xml_tree = ET.Element('class')
-    counters = [0,0,0,0] # ( { [ ;
+    token_count = 0
+    end_prev_parent = 0
 
-    for elem in xml:
+    for token in xml:
+        temp_token_count = 0
 
-        if elem.text in ['static', 'field']:
-            print("static or field")
+        if token.text in ['class']:
+            for elem in xml:
+
+                if (temp_token_count >= token_count):
+                    temp = ET.SubElement(new_xml_tree, elem.tag)
+                    temp.text = elem.text
+
+                if (elem.text == "{"):
+                    end_prev_parent = temp_token_count;
+                    print(end_prev_parent)
+                    break
+                temp_token_count += 1
+
+        elif token.text in ['static', 'field']:
             sub_routine = ET.SubElement(new_xml_tree, 'classVarDec')
             for elem in xml:
 
-                temp = ET.SubElement(sub_routine, elem.tag)
-                temp.text = elem.text
-                print(ET.tostring(temp))
+                if (temp_token_count >= token_count and temp_token_count > end_prev_parent):
+                    temp = ET.SubElement(sub_routine, elem.tag)
+                    temp.text = elem.text
+                    print(ET.tostring(temp))
 
-                if elem.text == ";":
-                    counters[3] += 1
+                if elem.text == ";" and temp_token_count >= token_count:
+                    end_prev_parent = temp_token_count
+                    print(end_prev_parent)
                     break
+                temp_token_count += 1
 
-        elif elem.text in ['constructor', 'function', 'method']:
+        elif token.text in ['constructor', 'function', 'method']:
             sub_routine = ET.SubElement(new_xml_tree, 'subroutineDec')
+
             parameter_list = ET.SubElement(sub_routine, 'parameterList')
             subroutine_body = ET.SubElement(sub_routine, 'subroutineBody')
             var_dec = ET.SubElement(sub_routine, 'varDec')
 
-        elif elem.text in ['let', 'if', 'else', 'while', 'do', 'return']:
+            for elem in xml:
 
-            if elem.text == 'let':
-                print(elem.text)
+                if elem.text in ['let', 'if', 'else', 'while', 'do', 'return']:
 
-            elif elem.text == 'if':
-                print(elem.text)
+                    if token.text == 'let':
+                        print(token.text)
 
-            elif elem.text == 'else':
-                print(elem.text)
+                    elif token.text == 'if':
+                        print(token.text)
 
-            elif elem.text == 'while':
-                print(elem.text)
+                    elif token.text == 'else':
+                        print(token.text)
 
-            elif elem.text == 'do':
-                print(elem.text)
+                    elif token.text == 'while':
+                        print(token.text)
 
-            elif elem.text == 'return':
-                print(elem.text)
+                    elif token.text == 'do':
+                        print(token.text)
 
-        elif elem.tag in ['integerConstant', 'stringConstant', 'keywordConstant']:
-            print(elem.text)
+                    elif token.text == 'return':
+                        print(token.text)
+
+        elif token.tag in ['integerConstant', 'stringConstant', 'keywordConstant']:
+            print(token.text)
 
         else:
+            one = 1
 
-            print(counters)
-
+        token_count += 1
     return xmlPrint(new_xml_tree)
 
 def addParentToTag(root, tag, new_parent):
