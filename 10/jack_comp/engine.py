@@ -35,13 +35,56 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
                     end_prev_parent = temp_token_count
                     print(end_prev_parent)
                     break
+
                 temp_token_count += 1
 
         elif token.text in ['constructor', 'function', 'method']:
             sub_routine = ET.SubElement(new_xml_tree, 'subroutineDec')
 
+            for elem in xml:
+                temp_token_count += 1
+
+                if (temp_token_count > token_count):
+                    temp = ET.SubElement(sub_routine, elem.tag)
+                    temp.text = elem.text
+
+                if (elem.text == "("):
+                    end_prev_parent = temp_token_count
+                    break
+
+            temp_token_count = 0
             parameter_list = ET.SubElement(sub_routine, 'parameterList')
+
+            for elem in xml:
+                temp_token_count += 1
+
+                if (elem.text == ')'):
+                    end_prev_parent = temp_token_count + 1
+                    temp = ET.SubElement(sub_routine, elem.tag)
+                    temp.text = elem.text
+                    temp_token_count = 0
+                    break
+
+                if (temp_token_count > end_prev_parent):
+                    temp = ET.SubElement(parameter_list, elem.tag)
+                    temp.text = elem.text
+
             subroutine_body = ET.SubElement(sub_routine, 'subroutineBody')
+
+            for elem in xml:
+                temp_token_count += 1
+
+                if (elem.text == "}"):
+                    end_prev_parent = temp_token_count + 1
+                    temp = ET.SubElement(subroutine_body, elem.tag)
+                    temp.text = elem.text
+                    temp_token_count = 0
+                    break
+
+                if (temp_token_count >= end_prev_parent):
+                    temp = ET.SubElement(subroutine_body, elem.tag)
+                    temp.text = elem.text
+
             var_dec = ET.SubElement(sub_routine, 'varDec')
 
             for elem in xml:

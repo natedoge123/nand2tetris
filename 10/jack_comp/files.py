@@ -72,15 +72,6 @@ def write_file(content, file_path, extension):
 def explode_path(file_path):
     pth = Path(file_path)
     return [str(part) for part in pth.parts]
-
-def get_file_name(file_dir):
-
-    #for file_name in file_list:
-        #exploded_path = files.explode_path(file_name)
-        #temp_file_name = exploded_path[-1].split('.')
-        #file_name_list.append(temp_file_name[0])
-    return 0
-        
-        
+       
 
 
