@@ -18,7 +18,6 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
 
                 if (elem.text == "{"):
                     end_prev_parent = temp_token_count;
-                    print(end_prev_parent)
                     break
                 temp_token_count += 1
 
@@ -29,11 +28,9 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
                 if (temp_token_count >= token_count and temp_token_count > end_prev_parent):
                     temp = ET.SubElement(sub_routine, elem.tag)
                     temp.text = elem.text
-                    print(ET.tostring(temp))
 
                 if elem.text == ";" and temp_token_count >= token_count:
                     end_prev_parent = temp_token_count
-                    print(end_prev_parent)
                     break
 
                 temp_token_count += 1
@@ -43,12 +40,14 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
 
             for elem in xml:
                 temp_token_count += 1
+                cond1 = temp_token_count > end_prev_parent
+                cond2 = temp_token_count > token_count
 
-                if (temp_token_count > token_count):
+                if (cond1 and cond2):
                     temp = ET.SubElement(sub_routine, elem.tag)
                     temp.text = elem.text
 
-                if (elem.text == "("):
+                if (elem.text == "(" and cond1 and cond2):
                     end_prev_parent = temp_token_count
                     break
 
@@ -57,8 +56,10 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
 
             for elem in xml:
                 temp_token_count += 1
+                cond1 = temp_token_count > end_prev_parent
+                cond2 = temp_token_count > token_count
 
-                if (elem.text == ')'):
+                if (elem.text == ')' and cond1 and cond2):
                     end_prev_parent = temp_token_count + 1
                     temp = ET.SubElement(sub_routine, elem.tag)
                     temp.text = elem.text
@@ -73,8 +74,10 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
 
             for elem in xml:
                 temp_token_count += 1
+                cond1 = temp_token_count > end_prev_parent
+                cond2 = temp_token_count > token_count
 
-                if (elem.text == "}"):
+                if (elem.text == "}" and cond1 and cond2):
                     end_prev_parent = temp_token_count + 1
                     temp = ET.SubElement(subroutine_body, elem.tag)
                     temp.text = elem.text
@@ -85,29 +88,48 @@ def run(xml): #takes tokenized xml tree and gives foramtted one
                     temp = ET.SubElement(subroutine_body, elem.tag)
                     temp.text = elem.text
 
-            var_dec = ET.SubElement(sub_routine, 'varDec')
 
             for elem in xml:
+                temp_token_count += 1
 
-                if elem.text in ['let', 'if', 'else', 'while', 'do', 'return']:
+                if elem.text in ['let', 'if', 'else',
+                                 'while', 'do', 'return']:
+                    sub_statements = ET.SubElement(subroutine_body,
+                                                   "statement")
 
-                    if token.text == 'let':
-                        print(token.text)
+                    if elem.text == 'let':
+                        let_statement = ET.SubElement(sub_statements, "letStatement")
+                        temp_statement_count = 0
+                        cond1 = temp_token_count >= end_prev_parent
 
-                    elif token.text == 'if':
-                        print(token.text)
+                        for item in xml:
+                            temp_statement_count += 1
+                            if (cond1):
+                                temp = ET.SubElement(let_statement, item.tag)
+                                temp.text = item.text
 
-                    elif token.text == 'else':
-                        print(token.text)
+                            if (item.text == ";" and cond1):
+                                temp = ET.SubElement(let_statement, item.tag)
+                                temp.text = item.text
+                                end_prev_parent = temp_token_count + 1
+                                temp_token_count = 0
+                                break
 
-                    elif token.text == 'while':
-                        print(token.text)
+                    elif elem.text == 'if':
+                        if_statment = ET.SubElement(sub_statements, "ifStatement")
+                        cond1 = temp_token_count >= end_prev_parent
 
-                    elif token.text == 'do':
-                        print(token.text)
+                    elif elem.text == 'while':
+                        while_statement = ET.SubElement(sub_statements, "whileStatement")
+                        cond1 = temp_token_count >= end_prev_parent
 
-                    elif token.text == 'return':
-                        print(token.text)
+                    elif elem.text == 'do':
+                        do_statement = ET.SubElement(sub_statements, "doStatement")
+                        cond1 = temp_token_count >= end_prev_parent
+
+                    elif elem.text == 'return':
+                        return_statement = ET.SubElement(sub_statements, "returnStatement")
+                        cond1 = temp_token_count >= end_prev_parent
 
         elif token.tag in ['integerConstant', 'stringConstant', 'keywordConstant']:
             print(token.text)

@@ -29,9 +29,10 @@ def read_files(open_file):
     return content
 
 def remove_comments(code):
+    lines = code.split('\n')
     cleaned_code = []
     inside_block_comment = False
-    for line in code.split('\n'):
+    for line in lines:
         # Check for /* and */ comments
         if '/*' in line and '*/' in line:
             line = line.split('/*')[0] + line.split('*/')[1]

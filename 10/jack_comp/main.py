@@ -15,13 +15,14 @@ for file in file_list:
 
     #   Tokenize file 
     file_string = files.read_files(file)
+    #print(file_string)
     tokenized = (myToken.tokenizer(file_string))
     #print(tokenized)
     xmled = myToken.xmlToken(tokenized)
 
     #   Format the tokenized xml to the correcto output
     formatted_xml = engine.run(xmled)
-    print(formatted_xml)
+    #print(formatted_xml)
 
 
     #   Save the files

@@ -25,11 +25,7 @@
             <keyword>let</keyword>
             <identifier>game</identifier>
             <symbol>=</symbol>
-            <identifier>SquareGame</identifier>
-            <symbol>.</symbol>
-            <identifier>new</identifier>
-            <symbol>(</symbol>
-            <symbol>)</symbol>
+            <identifier>game</identifier>
             <symbol>;</symbol>
             <keyword>do</keyword>
             <identifier>game</identifier>
@@ -48,45 +44,64 @@
             <keyword>return</keyword>
             <symbol>;</symbol>
             <symbol>}</symbol>
+            <statement>
+                <letStatement/>
+            </statement>
+            <statement>
+                <doStatement/>
+            </statement>
+            <statement>
+                <doStatement/>
+            </statement>
+            <statement>
+                <returnStatement/>
+            </statement>
+            <statement>
+                <ifStatement/>
+            </statement>
+            <statement/>
+            <statement>
+                <returnStatement/>
+            </statement>
         </subroutineBody>
-        <varDec/>
     </subroutineDec>
     <subroutineDec>
+        <keyword>void</keyword>
+        <identifier>more</identifier>
+        <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
             <keyword>var</keyword>
-            <identifier>SquareGame</identifier>
-            <identifier>game</identifier>
+            <keyword>boolean</keyword>
+            <identifier>b</identifier>
             <symbol>;</symbol>
-            <keyword>let</keyword>
-            <identifier>game</identifier>
-            <symbol>=</symbol>
-            <identifier>SquareGame</identifier>
-            <symbol>.</symbol>
-            <identifier>new</identifier>
+            <keyword>if</keyword>
             <symbol>(</symbol>
+            <identifier>b</identifier>
             <symbol>)</symbol>
-            <symbol>;</symbol>
-            <keyword>do</keyword>
-            <identifier>game</identifier>
-            <symbol>.</symbol>
-            <identifier>run</identifier>
-            <symbol>(</symbol>
-            <symbol>)</symbol>
-            <symbol>;</symbol>
-            <keyword>do</keyword>
-            <identifier>game</identifier>
-            <symbol>.</symbol>
-            <identifier>dispose</identifier>
-            <symbol>(</symbol>
-            <symbol>)</symbol>
-            <symbol>;</symbol>
-            <keyword>return</keyword>
-            <symbol>;</symbol>
+            <symbol>{</symbol>
             <symbol>}</symbol>
+            <statement>
+                <letStatement/>
+            </statement>
+            <statement>
+                <doStatement/>
+            </statement>
+            <statement>
+                <doStatement/>
+            </statement>
+            <statement>
+                <returnStatement/>
+            </statement>
+            <statement>
+                <ifStatement/>
+            </statement>
+            <statement/>
+            <statement>
+                <returnStatement/>
+            </statement>
         </subroutineBody>
-        <varDec/>
     </subroutineDec>
 </class>
