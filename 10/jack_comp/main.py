@@ -22,6 +22,8 @@ for file in file_list:
 
     #   Format the tokenized xml to the correcto output
     formatted_xml = engine.run(xmled)
+    formatted_xml_2 = engine.run2(xmled)
+    #print(myToken.xmlPrint(formatted_xml_2))
     #print(formatted_xml)
 
 
