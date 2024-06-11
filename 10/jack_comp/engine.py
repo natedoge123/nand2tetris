@@ -214,8 +214,8 @@ def run2(xml):
                     temp.text = elem.text
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
-                        print(xmlPrint(temp_tree))
                         sub = subroutine_maker(temp_tree)
+                        print(xmlPrint(sub))
                         end_prev_parent = count_1 + 1
                         break
                     last_count_braces = count_braces
@@ -226,13 +226,73 @@ def run2(xml):
 def subroutine_maker(xml):
     sub_tree = ET.Element('subroutineDec')
     token_count = 0
+    para_list_done = False
+    body_list_done = False
+    state_list_done = False
+    end_prev_parent = 0
 
     for token in xml:
+
+        if (token.text == "(" and not para_list_done):  #Parameter List
+            temp_count = 0
+
+            for item in xml:
+                temp_count += 1
+                cond_0 = (temp_count > token_count) and (temp_count > end_prev_parent)
+
+                if cond_0:
+
+                    if (item.text == "("):
+                        temp = ET.SubElement(sub_tree, item.tag)
+                        temp.text = item.text
+                        para_list = ET.SubElement(sub_tree, "parameterList")
+                        continue
+
+                    if (item.text != ")"):
+                        temp = ET.SubElement(para_list, item.tag)
+                        temp.text = item.text
+
+                    if (item.text == ")"):
+                        temp = ET.SubElement(sub_tree, item.tag)
+                        temp.text = item.text
+                        para_list_done = True
+                        end_prev_parent = token_count + 1
+                        break
+
+        if (token.text == "{" and not body_list_done):  #Parameter List
+            temp_count = 0
+            body_list = ET.SubElement(sub_tree, "subroutineBody")
+
+            for item in xml:
+                temp_count += 1
+                cond_0 = (temp_count > token_count) and (temp_count > end_prev_parent)
+
+                if cond_0:
+
+                    if (item.text == "{"):
+                        temp = ET.SubElement(body_list, item.tag)
+                        temp.text = item.text
+                        continue
+
+                    if (item.text != "}"):
+                        temp = ET.SubElement(body_list, item.tag)
+                        temp.text = item.text
+                        continue
+
+                    if (item.text != "}"):
+
+
+                    if (item.text == "}"):
+                        temp = ET.SubElement(body_list, item.tag)
+                        temp.text = item.text
+                        body_list_done = True
+                        end_prev_parent = token_count + 1
+                        break
+
         token_count += 1
 
-        if ():
-
     return sub_tree
+
 
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
