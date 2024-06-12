@@ -2,157 +2,7 @@ from types import new_class
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
-def run(xml): #takes tokenized xml tree and gives foramtted one
-    new_xml_tree = ET.Element('class')
-    token_count = 0
-    end_prev_parent = 0
-
-    for token in xml:
-        temp_token_count = 0
-
-        if token.text in ['class']:
-            for elem in xml:
-
-                if (temp_token_count >= token_count):
-                    temp = ET.SubElement(new_xml_tree, elem.tag)
-                    temp.text = elem.text
-
-                if (elem.text == "{"):
-                    end_prev_parent = temp_token_count;
-                    break
-                temp_token_count += 1
-
-        elif token.text in ['static', 'field']:
-            sub_routine = ET.SubElement(new_xml_tree, 'classVarDec')
-            for elem in xml:
-
-                if (temp_token_count >= token_count and temp_token_count > end_prev_parent):
-                    temp = ET.SubElement(sub_routine, elem.tag)
-                    temp.text = elem.text
-
-                if elem.text == ";" and temp_token_count >= token_count:
-                    end_prev_parent = temp_token_count
-                    break
-
-                temp_token_count += 1
-
-        elif token.text in ['constructor', 'function', 'method']:
-            sub_routine = ET.SubElement(new_xml_tree, 'subroutineDec')
-
-            for elem in xml:
-                temp_token_count += 1
-                cond1 = temp_token_count > end_prev_parent
-                cond2 = temp_token_count > token_count
-
-                if (cond1 and cond2):
-                    temp = ET.SubElement(sub_routine, elem.tag)
-                    temp.text = elem.text
-
-                if (elem.text == "(" and cond1 and cond2):
-                    end_prev_parent = temp_token_count
-                    break
-
-            temp_token_count = 0
-            parameter_list = ET.SubElement(sub_routine, 'parameterList')
-
-            for elem in xml:
-                temp_token_count += 1
-                cond1 = temp_token_count > end_prev_parent
-                cond2 = temp_token_count > token_count
-
-                if (elem.text == ')' and cond1 and cond2):
-                    end_prev_parent = temp_token_count + 1
-                    temp = ET.SubElement(sub_routine, elem.tag)
-                    temp.text = elem.text
-                    temp_token_count = 0
-                    break
-
-                if (temp_token_count > end_prev_parent):
-                    temp = ET.SubElement(parameter_list, elem.tag)
-                    temp.text = elem.text
-
-            subroutine_body = ET.SubElement(sub_routine, 'subroutineBody')
-
-            for elem in xml:
-                temp_token_count += 1
-                cond1 = temp_token_count > end_prev_parent
-                cond2 = temp_token_count > token_count
-
-                if (elem.text == "}" and cond1 and cond2):
-                    end_prev_parent = temp_token_count + 1
-                    temp = ET.SubElement(subroutine_body, elem.tag)
-                    temp.text = elem.text
-                    temp_token_count = 0
-                    break
-
-                if (temp_token_count >= end_prev_parent):
-                    temp = ET.SubElement(subroutine_body, elem.tag)
-                    temp.text = elem.text
-
-
-            for elem in xml:
-
-                if elem.text in ['let', 'if', 'else',
-                                 'while', 'do', 'return']:
-                    sub_statements = ET.SubElement(subroutine_body,
-                                                   "statement")
-
-                    if elem.text == 'let':
-                        let_statement = ET.SubElement(sub_statements, "letStatement")
-                        temp_statement_count = 0
-
-                        for item in xml:
-                            temp_statement_count += 1
-                            cond1 = temp_token_count >= end_prev_parent
-
-                            if (cond1):
-                                temp = ET.SubElement(let_statement, item.tag)
-                                temp.text = item.text
-
-                            if (item.text == ";" and cond1):
-                                temp = ET.SubElement(let_statement, item.tag)
-                                temp.text = item.text
-                                end_prev_parent = temp_token_count + 1
-                                temp_token_count = 0
-                                break
-
-                    elif elem.text == 'if':
-                        if_statment = ET.SubElement(sub_statements, "ifStatement")
-                        temp_statement_count = 0
-
-                        for item in xml:
-                            temp_token_count += 1
-                            cond1 = temp_token_count >= end_prev_parent
-
-                            if (cond1):
-                                temp = ET.SubElement(if_statment, item.tag)
-                                temp.text = item.text
-
-                            if (cond1 and item.text == "}"):
-                                break
-
-                    elif elem.text == 'while':
-                        while_statement = ET.SubElement(sub_statements, "whileStatement")
-                        cond1 = temp_token_count >= end_prev_parent
-
-                    elif elem.text == 'do':
-                        do_statement = ET.SubElement(sub_statements, "doStatement")
-                        cond1 = temp_token_count >= end_prev_parent
-
-                    elif elem.text == 'return':
-                        return_statement = ET.SubElement(sub_statements, "returnStatement")
-                        cond1 = temp_token_count >= end_prev_parent
-
-        elif token.tag in ['integerConstant', 'stringConstant', 'keywordConstant']:
-            print(token.text)
-
-        else:
-            one = 1
-
-        token_count += 1
-    return xmlPrint(new_xml_tree)
-
-def run2(xml):
+def run(xml):
     new_xml_tree = ET.Element("class")
     main_count = 0
     end_prev_parent = 0
@@ -215,11 +65,13 @@ def run2(xml):
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
                         sub = subroutine_maker(temp_tree)
-                        print(xmlPrint(sub))
+                        #$print(xmlPrint(sub))
                         end_prev_parent = count_1 + 1
                         break
                     last_count_braces = count_braces
                 count_1 += 1
+            new_xml_tree.append(sub)
+
 
     return new_xml_tree
 
@@ -228,7 +80,6 @@ def subroutine_maker(xml):
     token_count = 0
     para_list_done = False
     body_list_done = False
-    state_list_done = False
     end_prev_parent = 0
 
     for token in xml:
@@ -262,44 +113,115 @@ def subroutine_maker(xml):
         if (token.text == "{" and not body_list_done):  #Parameter List
             temp_count = 0
             body_list = ET.SubElement(sub_tree, "subroutineBody")
+            temp_tree = ET.Element("statement")
+            count_braces = 0
+            last_count_braces = count_braces
 
             for item in xml:
-                temp_count += 1
-                cond_0 = (temp_count > token_count) and (temp_count > end_prev_parent)
+                cond_0 = (temp_count >= token_count) and (temp_count >= end_prev_parent)
 
                 if cond_0:
-
                     if (item.text == "{"):
-                        temp = ET.SubElement(body_list, item.tag)
-                        temp.text = item.text
-                        continue
-
-                    if (item.text != "}"):
-                        temp = ET.SubElement(body_list, item.tag)
-                        temp.text = item.text
-                        continue
-
-                    if (item.text != "}"):
-
-
+                        count_braces += 1
                     if (item.text == "}"):
-                        temp = ET.SubElement(body_list, item.tag)
-                        temp.text = item.text
-                        body_list_done = True
-                        end_prev_parent = token_count + 1
+                        count_braces -= 1
+
+                    temp = ET.SubElement(temp_tree, item.tag)
+                    temp.text = item.text
+
+                    if ((count_braces == 0) and (last_count_braces > count_braces)):
+                        print(xmlPrint(temp_tree))
+                        #statement = statements(temp_tree)
                         break
 
+                    last_count_braces = count_braces
+                temp_count += 1
         token_count += 1
 
     return sub_tree
 
+def statements(xml):
+    sub_routine = ET.Element('statements')
+    counter = 0
+    end_prev_parent = 0
+
+    let_active = False
+    if_active = False
+    else_active = False
+    while_active = False
+    do_active = False
+    return_active = False
+
+    for item in xml:
+        any_active = (let_active or if_active or while_active or do_active or return_active)
+        counter += 1
+
+        match item.text:
+            case 'let':
+                let_active = True
+                state_let = ET.SubElement(sub_routine, "letStatement")
+            case 'if':
+                if_active = True
+                state_if = ET.SubElement(sub_routine, "letStatement")
+            case 'else':
+                else_active = True
+                state_else = ET.SubElement(sub_routine, "letStatement")
+            case 'while':
+                while_active = True
+                state_while = ET.SubElement(sub_routine, "letStatement")
+            case 'do':
+                do_active = True
+                state_do = ET.SubElement(sub_routine, "letStatement")
+            case 'return':
+                return_active = True
+                state_return = ET.SubElement(sub_routine, "letStatement")
+
+        if (let_active):
+            temp = ET.SubElement(state_let, item.tag)
+            temp.text = item.text
+
+            if (item.text == ";"):
+                let_active = False
+
+        if (if_active):
+            temp = ET.SubElement(state_if, item.tag)
+            temp.text = item.text
+
+            if (item.text == "}"):
+                if_active = False
+
+        if (else_active):
+            temp = ET.SubElement(state_else, item.tag)
+            temp.text = item.text
+
+            if (item.text == "}"):
+                if_active = False
+
+        if (while_active):
+            temp = ET.SubElement(state_while, item.tag)
+            temp.text = item.text
+
+            if (item.text == "}"):
+                if_active = False
+
+        if (do_active):
+            temp = ET.SubElement(state_do, item.tag)
+            temp.text = item.text
+
+            if (item.text == "}"):
+                if_active = False
+
+        if (return_active):
+            temp = ET.SubElement(state_return, item.tag)
+            temp.text = item.text
+
+            if (item.text == "}"):
+                if_active = False
 
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
     indented = minidom.parseString(long_string)
     return indented.toprettyxml(indent="    ")
-
-
 
 
 
