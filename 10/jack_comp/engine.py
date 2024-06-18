@@ -113,7 +113,7 @@ def subroutine_maker(xml):
         if (token.text == "{" and not body_list_done):  #Parameter List
             temp_count = 0
             body_list = ET.SubElement(sub_tree, "subroutineBody")
-            temp_tree = ET.Element("statement")
+            temp_tree = ET.Element("statement_list")
             count_braces = 0
             last_count_braces = count_braces
 
@@ -121,27 +121,43 @@ def subroutine_maker(xml):
                 cond_0 = (temp_count >= token_count) and (temp_count >= end_prev_parent)
 
                 if cond_0:
+
                     if (item.text == "{"):
                         count_braces += 1
                     if (item.text == "}"):
                         count_braces -= 1
 
-                    temp = ET.SubElement(temp_tree, item.tag)
-                    temp.text = item.text
+                    if ((count_braces == 1) and (last_count_braces == 0)):
+                        temp = ET.SubElement(body_list, item.tag)
+                        temp.text = item.text
+
+                    elif ((count_braces == 0) and (last_count_braces == 1)):
+                        dump = 2
+
+                    else:
+                        temp = ET.SubElement(temp_tree, item.tag)
+                        temp.text = item.text
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
-                        print(xmlPrint(temp_tree))
-                        #statement = statements(temp_tree)
-                        break
+                        statement = statements(temp_tree)
+                        print(xmlPrint(statement))
+                        body_list.append(statement)
+
+                    if ((count_braces == 0) and (last_count_braces == 1)):
+                        temp = ET.SubElement(body_list, item.tag)
+                        temp.text = item.text
 
                     last_count_braces = count_braces
                 temp_count += 1
         token_count += 1
 
+    sub_tree.append(body_list)
+
     return sub_tree
 
 def statements(xml):
     sub_routine = ET.Element('statements')
+
     counter = 0
     end_prev_parent = 0
 
@@ -160,21 +176,27 @@ def statements(xml):
             case 'let':
                 let_active = True
                 state_let = ET.SubElement(sub_routine, "letStatement")
+
             case 'if':
                 if_active = True
-                state_if = ET.SubElement(sub_routine, "letStatement")
+                state_if = ET.SubElement(sub_routine, "ifStatement")
+
             case 'else':
                 else_active = True
-                state_else = ET.SubElement(sub_routine, "letStatement")
+                state_else = ET.SubElement(sub_routine, "else")
+
             case 'while':
                 while_active = True
-                state_while = ET.SubElement(sub_routine, "letStatement")
+                state_while = ET.SubElement(sub_routine, "whileStatement")
+
             case 'do':
                 do_active = True
-                state_do = ET.SubElement(sub_routine, "letStatement")
+                state_do = ET.SubElement(sub_routine, "doStatement")
+
             case 'return':
                 return_active = True
-                state_return = ET.SubElement(sub_routine, "letStatement")
+                state_return = ET.SubElement(sub_routine, "returnStatement")
+                
 
         if (let_active):
             temp = ET.SubElement(state_let, item.tag)
@@ -217,6 +239,17 @@ def statements(xml):
 
             if (item.text == "}"):
                 if_active = False
+
+
+
+    return sub_routine
+
+def Expression(xml):
+    expression_list = ET.Element('expression')
+
+
+    return expression_list
+
 
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
