@@ -64,8 +64,9 @@ def run(xml):
                     temp.text = elem.text
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
+                        print(xmlPrint(temp_tree))
                         sub = subroutine_maker(temp_tree)
-                        #$print(xmlPrint(sub))
+                        #print(xmlPrint(sub))
                         end_prev_parent = count_1 + 1
                         break
                     last_count_braces = count_braces
@@ -109,6 +110,9 @@ def subroutine_maker(xml):
                         para_list_done = True
                         end_prev_parent = token_count + 1
                         break
+                else:
+                    temp = ET.SubElement(sub_tree, item.tag)
+                    temp.text = item.text
 
         if (token.text == "{" and not body_list_done):  #Parameter List
             temp_count = 0
@@ -140,7 +144,7 @@ def subroutine_maker(xml):
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
                         statement = statements(temp_tree)
-                        print(xmlPrint(statement))
+                        #print(xmlPrint(statement))
                         body_list.append(statement)
 
                     if ((count_braces == 0) and (last_count_braces == 1)):
@@ -157,6 +161,7 @@ def subroutine_maker(xml):
 
 def statements(xml):
     sub_routine = ET.Element('statements')
+    expression_tree = ET.Element('exp')
 
     counter = 0
     end_prev_parent = 0
@@ -167,6 +172,7 @@ def statements(xml):
     while_active = False
     do_active = False
     return_active = False
+    exp_active = False
 
     for item in xml:
         any_active = (let_active or if_active or while_active or do_active or return_active)
@@ -176,76 +182,101 @@ def statements(xml):
             case 'let':
                 let_active = True
                 state_let = ET.SubElement(sub_routine, "letStatement")
+                temp = ET.SubElement(state_let, item.tag)
+                temp.text = item.text
+                continue
 
             case 'if':
                 if_active = True
                 state_if = ET.SubElement(sub_routine, "ifStatement")
+                temp = ET.SubElement(state_if, item.tag)
+                temp.text = item.text
+                continue
 
             case 'else':
                 else_active = True
                 state_else = ET.SubElement(sub_routine, "else")
+                temp = ET.SubElement(state_else, item.tag)
+                temp.text = item.text
+                continue
 
             case 'while':
                 while_active = True
                 state_while = ET.SubElement(sub_routine, "whileStatement")
+                temp = ET.SubElement(state_while, item.tag)
+                temp.text = item.text
+                continue
 
             case 'do':
                 do_active = True
                 state_do = ET.SubElement(sub_routine, "doStatement")
+                temp = ET.SubElement(state_do, item.tag)
+                temp.text = item.text
+                continue
 
             case 'return':
                 return_active = True
                 state_return = ET.SubElement(sub_routine, "returnStatement")
+                temp = ET.SubElement(state_return, item.tag)
+                temp.text = item.text
+                continue
                 
 
         if (let_active):
-            temp = ET.SubElement(state_let, item.tag)
+            temp = ET.SubElement(expression_tree, item.tag)
             temp.text = item.text
 
             if (item.text == ";"):
                 let_active = False
 
         if (if_active):
-            temp = ET.SubElement(state_if, item.tag)
+            temp = ET.SubElement(expression_tree, item.tag)
             temp.text = item.text
 
             if (item.text == "}"):
                 if_active = False
 
         if (else_active):
-            temp = ET.SubElement(state_else, item.tag)
+            temp = ET.SubElement(expression_tree, item.tag)
             temp.text = item.text
 
             if (item.text == "}"):
                 if_active = False
 
         if (while_active):
-            temp = ET.SubElement(state_while, item.tag)
+            temp = ET.SubElement(expression_tree, item.tag)
             temp.text = item.text
 
             if (item.text == "}"):
                 if_active = False
 
         if (do_active):
-            temp = ET.SubElement(state_do, item.tag)
+            temp = ET.SubElement(sub_routine, item.tag)
             temp.text = item.text
 
-            if (item.text == "}"):
+            if (item.text == ";"):
                 if_active = False
 
         if (return_active):
             temp = ET.SubElement(state_return, item.tag)
             temp.text = item.text
 
-            if (item.text == "}"):
+            if (item.text == ";"):
                 if_active = False
 
 
 
     return sub_routine
 
-def Expression(xml):
+def Expression(xml, symbol):
     expression_list = ET.Element('expression')
+    counter = 0
+
+    for item in xml:
+        cond_0 = 0
+
+        temp = ET.SubElement(expression_list, item.tag)
+        temp.text = item.text
 
 
     return expression_list
