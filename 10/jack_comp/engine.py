@@ -64,7 +64,7 @@ def run(xml):
                     temp.text = elem.text
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
-                        print(xmlPrint(temp_tree))
+                        #print(xmlPrint(temp_tree))
                         sub = subroutine_maker(temp_tree)
                         #print(xmlPrint(sub))
                         end_prev_parent = count_1 + 1
@@ -184,6 +184,7 @@ def statements(xml):
                 state_let = ET.SubElement(sub_routine, "letStatement")
                 temp = ET.SubElement(state_let, item.tag)
                 temp.text = item.text
+                let_expression = False
                 continue
 
             case 'if':
@@ -223,11 +224,29 @@ def statements(xml):
                 
 
         if (let_active):
-            temp = ET.SubElement(expression_tree, item.tag)
-            temp.text = item.text
 
             if (item.text == ";"):
                 let_active = False
+                exp_active = False
+                temp_expression = Expression(expression_tree)
+                expression_tree = ET.Element('exp')
+                state_let.append(temp_expression)
+
+                temp = ET.SubElement(state_let, item.tag) #append ; to the end of the expression
+                temp.text = item.text
+
+                continue #skip rest of this cycle
+
+            if exp_active and item.text != ';':
+                temp = ET.SubElement(expression_tree, item.tag)
+                temp.text = item.text
+
+            else:
+                temp = ET.SubElement(state_let, item.tag)
+                temp.text = item.text
+
+            if (item.text == '='):
+                exp_active = True
 
         if (if_active):
             temp = ET.SubElement(expression_tree, item.tag)
@@ -265,20 +284,33 @@ def statements(xml):
                 if_active = False
 
 
-
     return sub_routine
 
-def Expression(xml, symbol):
+def Expression(xml):
+    print(xmlPrint(xml))
     expression_list = ET.Element('expression')
     counter = 0
+    term_active = False
 
     for item in xml:
-        cond_0 = 0
 
-        temp = ET.SubElement(expression_list, item.tag)
-        temp.text = item.text
+        if item.tag in 'identifier':
+            term_active = True
+            term = ET.SubElement(expression_list, 'term')
+            temp = ET.SubElement(term, item.tag)
+
+        else:
+            term_active = False
+
+        if term_active:
+            temp.text = item.text
+
+        else:
+            temp = ET.SubElement(expression_list, item.tag)
+            temp.text = item.text
 
 
+    print(xmlPrint(expression_list))
     return expression_list
 
 

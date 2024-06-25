@@ -3,6 +3,7 @@ import os
 import re
 import sys
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 def open_dir(dir_path):
     file_type = "*.jack"
