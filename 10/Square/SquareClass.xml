@@ -59,7 +59,21 @@
             <keyword>this</keyword>
             <symbol>;</symbol>
             <symbol>}</symbol>
+            <statement>
+                <letStatement/>
+            </statement>
+            <statement>
+                <letStatement/>
+            </statement>
+            <statement>
+                <letStatement/>
+            </statement>
+            <statement>
+                <doStatement/>
+            </statement>
+            <statement>
+                <returnStatement/>
+            </statement>
         </subroutineBody>
-        <varDec/>
     </subroutineDec>
 </class>

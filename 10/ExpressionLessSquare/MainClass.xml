@@ -18,54 +18,77 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>var</keyword>
-            <identifier>SquareGame</identifier>
-            <identifier>game</identifier>
-            <symbol>;</symbol>
-            <keyword>let</keyword>
-            <identifier>game</identifier>
-            <symbol>=</symbol>
-            <identifier>game</identifier>
-            <symbol>;</symbol>
-            <keyword>do</keyword>
-            <identifier>game</identifier>
-            <symbol>.</symbol>
-            <identifier>run</identifier>
-            <symbol>(</symbol>
-            <symbol>)</symbol>
-            <symbol>;</symbol>
-            <keyword>do</keyword>
-            <identifier>game</identifier>
-            <symbol>.</symbol>
-            <identifier>dispose</identifier>
-            <symbol>(</symbol>
-            <symbol>)</symbol>
-            <symbol>;</symbol>
-            <keyword>return</keyword>
-            <symbol>;</symbol>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <expression>
+                        <term>
+                            <identifier>game</identifier>
+                        </term>
+                    </expression>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <subroutineCall>
+                        <expression/>
+                    </subroutineCall>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <subroutineCall>
+                        <expression/>
+                    </subroutineCall>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statement>
-                <letStatement/>
-            </statement>
-            <statement>
-                <doStatement/>
-            </statement>
-            <statement>
-                <doStatement/>
-            </statement>
-            <statement>
-                <returnStatement/>
-            </statement>
-            <statement>
-                <ifStatement/>
-            </statement>
-            <statement/>
-            <statement>
-                <returnStatement/>
-            </statement>
+        </subroutineBody>
+        <subroutineBody>
+            <symbol>{</symbol>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <expression>
+                        <term>
+                            <identifier>game</identifier>
+                        </term>
+                    </expression>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <subroutineCall>
+                        <expression/>
+                    </subroutineCall>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <subroutineCall>
+                        <expression/>
+                    </subroutineCall>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
+            <symbol>}</symbol>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>function</keyword>
         <keyword>void</keyword>
         <identifier>more</identifier>
         <symbol>(</symbol>
@@ -73,35 +96,41 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>var</keyword>
-            <keyword>boolean</keyword>
-            <identifier>b</identifier>
-            <symbol>;</symbol>
-            <keyword>if</keyword>
-            <symbol>(</symbol>
-            <identifier>b</identifier>
-            <symbol>)</symbol>
-            <symbol>{</symbol>
+            <statements>
+                <ifStatement>
+                    <keyword>if</keyword>
+                </ifStatement>
+                <else>
+                    <keyword>else</keyword>
+                </else>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statement>
-                <letStatement/>
-            </statement>
-            <statement>
-                <doStatement/>
-            </statement>
-            <statement>
-                <doStatement/>
-            </statement>
-            <statement>
-                <returnStatement/>
-            </statement>
-            <statement>
-                <ifStatement/>
-            </statement>
-            <statement/>
-            <statement>
-                <returnStatement/>
-            </statement>
+        </subroutineBody>
+        <subroutineBody>
+            <symbol>{</symbol>
+            <statements/>
+            <symbol>}</symbol>
+            <symbol>{</symbol>
+            <statements>
+                <else>
+                    <keyword>else</keyword>
+                </else>
+            </statements>
+            <symbol>}</symbol>
+        </subroutineBody>
+        <subroutineBody>
+            <symbol>{</symbol>
+            <statements/>
+            <symbol>}</symbol>
+        </subroutineBody>
+        <subroutineBody>
+            <symbol>{</symbol>
+            <statements/>
+            <symbol>}</symbol>
         </subroutineBody>
     </subroutineDec>
 </class>

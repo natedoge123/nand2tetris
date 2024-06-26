@@ -180,6 +180,7 @@ def statements(xml):
 
         match item.text:
             case 'let':
+                expression_tree = ET.Element('exp')
                 let_active = True
                 state_let = ET.SubElement(sub_routine, "letStatement")
                 temp = ET.SubElement(state_let, item.tag)
@@ -209,6 +210,7 @@ def statements(xml):
                 continue
 
             case 'do':
+                do_tree = ET.Element('do')
                 do_active = True
                 state_do = ET.SubElement(sub_routine, "doStatement")
                 temp = ET.SubElement(state_do, item.tag)
@@ -260,34 +262,40 @@ def statements(xml):
             temp.text = item.text
 
             if (item.text == "}"):
-                if_active = False
+                else_active = False
 
         if (while_active):
             temp = ET.SubElement(expression_tree, item.tag)
             temp.text = item.text
 
             if (item.text == "}"):
-                if_active = False
+                while_active = False
 
         if (do_active):
-            temp = ET.SubElement(sub_routine, item.tag)
-            temp.text = item.text
 
-            if (item.text == ";"):
-                if_active = False
+            if (item.text == ';'):
+                do_active = False
+                temp_call = subRoutine_Call(do_tree)
+                state_do.append(temp_call)
+
+                temp = ET.SubElement(state_do, item.tag)
+                temp.text = item.text
+                continue
+            
+            temp = ET.SubElement(do_tree, item.tag)
+            temp.text = item.text
 
         if (return_active):
             temp = ET.SubElement(state_return, item.tag)
             temp.text = item.text
 
             if (item.text == ";"):
-                if_active = False
+                return_active = False
 
 
     return sub_routine
 
 def Expression(xml):
-    print(xmlPrint(xml))
     expression_list = ET.Element('expression')
     counter = 0
     term_active = False
@@ -310,8 +318,36 @@ def Expression(xml):
             temp.text = item.text
 
 
-    print(xmlPrint(expression_list))
     return expression_list
+
+def subRoutine_Call(xml):
+    print(xmlPrint(xml))
+    sub_route = ET.Element('subroutineCall')
+    temp_exp = ET.Element('exp')
+    para_count = 0
+    prev_para_count = para_count
+    exp_active = False
+    counter = 0
+
+    for item in xml:
+        print(para_count)
+        counter += 1
+
+        if item.text == "(":
+            para_count += 1
+        if item.text == ")":
+            para_count -= 1
+
+        if ((para_count == 0) and (prev_para_count > para_count)):
+            print(xmlPrint(temp_exp))
+            sub_route.append(Expression(temp_exp))
+            
+
+        prev_para_count = para_count
+
+    xmlPrint(sub_route)
+    return sub_route
+
 
 
 def xmlPrint(xml):
