@@ -1,4 +1,3 @@
-from types import new_class
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
@@ -49,6 +48,7 @@ def run(xml):
             count_1 = 0
             count_braces = 0
             last_count_braces = count_braces
+            brace_done = False
 
             for elem in xml:
                 cond_0 = (count_1 >= main_count) and (count_1 >= end_prev_parent)
@@ -63,7 +63,7 @@ def run(xml):
                     temp = ET.SubElement(temp_tree, elem.tag)
                     temp.text = elem.text
 
-                    if ((count_braces == 0) and (last_count_braces > count_braces)):
+                    if ((count_braces == 0) and (last_count_braces > count_braces) and last_count_braces == 1):
                         #print(xmlPrint(temp_tree))
                         sub = subroutine_maker(temp_tree)
                         #print(xmlPrint(sub))
@@ -135,16 +135,12 @@ def subroutine_maker(xml):
                         temp = ET.SubElement(body_list, item.tag)
                         temp.text = item.text
 
-                    elif ((count_braces == 0) and (last_count_braces == 1)):
-                        dump = 2
-
                     else:
                         temp = ET.SubElement(temp_tree, item.tag)
                         temp.text = item.text
 
                     if ((count_braces == 0) and (last_count_braces > count_braces)):
                         statement = statements(temp_tree)
-                        #print(xmlPrint(statement))
                         body_list.append(statement)
 
                     if ((count_braces == 0) and (last_count_braces == 1)):
@@ -156,7 +152,7 @@ def subroutine_maker(xml):
         token_count += 1
 
     sub_tree.append(body_list)
-
+    print("ALL DONE")
     return sub_tree
 
 def statements(xml):
@@ -212,6 +208,7 @@ def statements(xml):
             case 'do':
                 do_tree = ET.Element('do')
                 do_active = True
+                do_para_count = 0
                 state_do = ET.SubElement(sub_routine, "doStatement")
                 temp = ET.SubElement(state_do, item.tag)
                 temp.text = item.text
@@ -220,10 +217,10 @@ def statements(xml):
             case 'return':
                 return_active = True
                 state_return = ET.SubElement(sub_routine, "returnStatement")
+                return_expression = ET.Element('exp')
                 temp = ET.SubElement(state_return, item.tag)
                 temp.text = item.text
                 continue
-                
 
         if (let_active):
 
@@ -273,24 +270,41 @@ def statements(xml):
 
         if (do_active):
 
-            if (item.text == ';'):
-                do_active = False
+            if item.text == '(':
+                do_para_count += 1
+            if item.text == ')':
+                do_para_count -= 1
+
+            if (do_para_count == 0 and item.text == ')'):
                 temp_call = subRoutine_Call(do_tree)
                 state_do.append(temp_call)
 
                 temp = ET.SubElement(state_do, item.tag)
                 temp.text = item.text
                 continue
-            
-            temp = ET.SubElement(do_tree, item.tag)
-            temp.text = item.text
+
+            if do_para_count >= 1 and item.text != '(':
+                temp = ET.SubElement(do_tree, item.tag)
+                temp.text = item.text
+            else:
+                temp = ET.SubElement(state_do, item.tag)
+                temp.text = item.text
+
+            if item.text == ';':
+                do_active = False
 
         if (return_active):
-            temp = ET.SubElement(state_return, item.tag)
-            temp.text = item.text
 
             if (item.text == ";"):
                 return_active = False
+                state_return.append(Expression(return_expression))
+                temp = ET.SubElement(state_return, item.tag)
+                temp.text = item.text
+
+            else:
+                temp = ET.SubElement(return_expression, item.tag)
+                temp.text = item.text
+                
 
 
     return sub_routine
@@ -321,8 +335,7 @@ def Expression(xml):
     return expression_list
 
 def subRoutine_Call(xml):
-    print(xmlPrint(xml))
-    sub_route = ET.Element('subroutineCall')
+    sub_route = ET.Element('expressionList')
     temp_exp = ET.Element('exp')
     para_count = 0
     prev_para_count = para_count
@@ -330,7 +343,6 @@ def subRoutine_Call(xml):
     counter = 0
 
     for item in xml:
-        print(para_count)
         counter += 1
 
         if item.text == "(":
@@ -339,14 +351,27 @@ def subRoutine_Call(xml):
             para_count -= 1
 
         if ((para_count == 0) and (prev_para_count > para_count)):
-            print(xmlPrint(temp_exp))
-            sub_route.append(Expression(temp_exp))
+            sub_route.append(expressionList(temp_exp))
             
 
         prev_para_count = para_count
 
-    xmlPrint(sub_route)
     return sub_route
+
+def expressionList(xml):
+    temp_list = ET.Element('temp')
+    exp_list = ET.Element('expressionList')
+    counter = 0
+
+    for item in xml:
+        temp = ET.SubElement(temp_list, item.tag)
+        temp.text = item.text
+
+        if item.text == ',':
+            exp_list.append(Expression(temp_list))
+
+
+    return exp_list
 
 
 

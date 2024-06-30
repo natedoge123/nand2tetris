@@ -1,6 +1,7 @@
 import files
 import myToken
 import engine
+import enginetwo
 
 import sys
 
@@ -21,7 +22,8 @@ for file in file_list:
     xmled = myToken.xmlToken(tokenized)
 
     #   Format the tokenized xml to the correcto output
-    formatted_xml = engine.run(xmled)
+    #formatted_xml = engine.run(xmled)
+    formatted_xml = enginetwo.classMaker(xmled)
     #print(myToken.xmlPrint(formatted_xml_2))
     #print(formatted_xml)
 
