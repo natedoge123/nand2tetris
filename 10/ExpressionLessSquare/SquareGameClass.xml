@@ -2,11 +2,14 @@
 <class>
     <keyword>class</keyword>
     <identifier>SquareGame</identifier>
+    <symbol>{</symbol>
     <classVarDec>
         <keyword>field</keyword>
         <identifier>Square</identifier>
         <identifier>square</identifier>
         <symbol>;</symbol>
+    </classVarDec>
+    <classVarDec>
         <keyword>field</keyword>
         <keyword>int</keyword>
         <identifier>direction</identifier>
@@ -16,8 +19,6 @@
         <keyword>constructor</keyword>
         <identifier>SquareGame</identifier>
         <identifier>new</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>square</identifier>
@@ -33,104 +34,76 @@
         <identifier>square</identifier>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>dispose</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>dispose</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Memory</identifier>
         <symbol>.</symbol>
         <identifier>deAlloc</identifier>
-        <symbol>(</symbol>
-        <identifier>square</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>moveSquare</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>direction</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>moveUp</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>direction</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>moveDown</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>direction</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>moveLeft</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>direction</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>moveRight</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>do</keyword>
         <identifier>Sys</identifier>
         <symbol>.</symbol>
         <identifier>wait</identifier>
-        <symbol>(</symbol>
-        <identifier>direction</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>run</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>var</keyword>
         <keyword>char</keyword>
@@ -146,14 +119,8 @@
         <identifier>key</identifier>
         <symbol>;</symbol>
         <keyword>while</keyword>
-        <symbol>(</symbol>
-        <identifier>exit</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>while</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>key</identifier>
@@ -162,14 +129,9 @@
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>moveSquare</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>exit</identifier>
@@ -178,35 +140,22 @@
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>decSize</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>square</identifier>
         <symbol>.</symbol>
         <identifier>incSize</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>direction</identifier>
@@ -215,9 +164,6 @@
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>direction</identifier>
@@ -226,9 +172,6 @@
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>direction</identifier>
@@ -237,9 +180,6 @@
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>direction</identifier>
@@ -248,9 +188,6 @@
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>while</keyword>
-        <symbol>(</symbol>
-        <identifier>key</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>key</identifier>
@@ -259,8 +196,6 @@
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>moveSquare</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <symbol>}</symbol>

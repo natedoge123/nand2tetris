@@ -2,6 +2,7 @@
 <class>
     <keyword>class</keyword>
     <identifier>Square</identifier>
+    <symbol>{</symbol>
     <classVarDec>
         <keyword>field</keyword>
         <keyword>int</keyword>
@@ -9,6 +10,8 @@
         <symbol>,</symbol>
         <identifier>y</identifier>
         <symbol>;</symbol>
+    </classVarDec>
+    <classVarDec>
         <keyword>field</keyword>
         <keyword>int</keyword>
         <identifier>size</identifier>
@@ -18,16 +21,6 @@
         <keyword>constructor</keyword>
         <identifier>Square</identifier>
         <identifier>new</identifier>
-        <symbol>(</symbol>
-        <keyword>int</keyword>
-        <identifier>Ax</identifier>
-        <symbol>,</symbol>
-        <keyword>int</keyword>
-        <identifier>Ay</identifier>
-        <symbol>,</symbol>
-        <keyword>int</keyword>
-        <identifier>Asize</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>let</keyword>
         <identifier>x</identifier>
@@ -46,107 +39,73 @@
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>draw</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <identifier>x</identifier>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>dispose</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Memory</identifier>
         <symbol>.</symbol>
         <identifier>deAlloc</identifier>
-        <symbol>(</symbol>
-        <keyword>this</keyword>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>draw</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>erase</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>incSize</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>erase</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>size</identifier>
@@ -155,28 +114,21 @@
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>draw</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>decSize</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>size</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>erase</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>size</identifier>
@@ -185,45 +137,28 @@
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>draw</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>moveUp</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>y</identifier>
@@ -234,60 +169,33 @@
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>moveDown</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>y</identifier>
@@ -298,60 +206,33 @@
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>moveLeft</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>x</identifier>
@@ -362,60 +243,33 @@
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>method</keyword>
         <keyword>void</keyword>
         <identifier>moveRight</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>let</keyword>
         <identifier>x</identifier>
@@ -426,23 +280,11 @@
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>setColor</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>Screen</identifier>
         <symbol>.</symbol>
         <identifier>drawRectangle</identifier>
-        <symbol>(</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>,</symbol>
-        <identifier>x</identifier>
-        <symbol>,</symbol>
-        <identifier>y</identifier>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <symbol>}</symbol>
         <keyword>return</keyword>

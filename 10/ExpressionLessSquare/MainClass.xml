@@ -2,6 +2,7 @@
 <class>
     <keyword>class</keyword>
     <identifier>Main</identifier>
+    <symbol>{</symbol>
     <classVarDec>
         <keyword>static</keyword>
         <keyword>boolean</keyword>
@@ -12,8 +13,6 @@
         <keyword>function</keyword>
         <keyword>void</keyword>
         <identifier>main</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>var</keyword>
         <identifier>SquareGame</identifier>
@@ -28,33 +27,26 @@
         <identifier>game</identifier>
         <symbol>.</symbol>
         <identifier>run</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>do</keyword>
         <identifier>game</identifier>
         <symbol>.</symbol>
         <identifier>dispose</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>;</symbol>
         <keyword>return</keyword>
         <symbol>;</symbol>
         <symbol>}</symbol>
+    </subroutineDec>
+    <subroutineDec>
         <keyword>function</keyword>
         <keyword>void</keyword>
         <identifier>more</identifier>
-        <symbol>(</symbol>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <keyword>var</keyword>
         <keyword>boolean</keyword>
         <identifier>b</identifier>
         <symbol>;</symbol>
         <keyword>if</keyword>
-        <symbol>(</symbol>
-        <identifier>b</identifier>
-        <symbol>)</symbol>
         <symbol>{</symbol>
         <symbol>}</symbol>
         <keyword>else</keyword>
