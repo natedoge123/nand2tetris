@@ -1,6 +1,8 @@
 from re import sub
+#from sys import last_traceback
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+#import statement
 
 def classMaker(xml):
     class_tree = ET.Element('class')
@@ -105,41 +107,173 @@ def subrountineFinder(xml):
     return xml_list
 
 def subroutineDecBuilder(xml):
-    print(xmlPrint(xml))
     temp_xml = ET.Element('subroutineDec')
     para_list = ET.Element('parameterList')
-    subroutine_body = ET.Element('subroutine_body')
+    body_list = ET.Element('body_list')
 
     para_count = 0
-    last_para_count = para_count
+    para_done = False
+    para_active = False
 
-    para_list_done = False
-    
+    brace_count = 0
+    body_done = False
+    body_active = False
+
 
     for item in xml:
+
         last_para_count = para_count
+        last_brace_count = brace_count
 
-        if item.text == '(':
-            para_count += 1
-        if item.text == ')':
-            para_count -= 1
+        if item.text == '(': para_count += 1
+        if item.text == ')': para_count -= 1
 
-        if (para_count == 0 and last_para_count == 0 and para_list_done = False):
+        if item.text == '{': brace_count += 1
+        if item.text == '}': brace_count -= 1
+
+        if (not para_done and item.text == '('):
+            para_active = True
             temp = ET.SubElement(temp_xml, item.tag)
             temp.text = item.text
-
-
-        if (para_count == 0 and last_para_count == 0):
-            temp = ET.SubElement(temp_xml, item.tag)
-            temp.text = item.text
-
-        elif (para_count == 0 and last_para_count == 1):
-            temp = ET.SubElement(temp_xml, item.tag)
-            temp.text = item.text
+            continue
             
+        if (para_active and item.text != ')'):
+            temp = ET.SubElement(para_list, item.tag)
+            temp.text = item.text
+            continue
 
+        if (para_active and item.text == ')'):
+            temp_xml.append(para_list)
+            temp = ET.SubElement(temp_xml, item.tag)
+            temp.text = item.text
+            para_active = False
+            para_done = True
+            continue
+
+        if (not body_done and item.text == '{'):
+            body_active = True
+            temp = ET.SubElement(body_list, item.tag)
+            temp.text = item.text
+            continue
+
+        if (body_active and brace_count > 0):
+            temp = ET.SubElement(body_list, item.tag)
+            temp.text = item.text
+            continue
+
+        if (body_active and brace_count == 0 and last_brace_count == 1):
+            temp = ET.SubElement(body_list, item.tag)
+            temp.text = item.text
+            temp_xml.append(subroutineBody(body_list))
+            continue
 
     return temp_xml
+
+def subroutineBody(xml):
+    sub_body = ET.Element('subroutineBody')
+    temp_state = ET.Element('temp')
+    statements = []
+    loop_words = ['let', 'if', 'else', 'while', 'do', 'return']
+
+    let_active = False
+    if_active = False
+    while_active = False
+    do_active = False
+    return_active = False
+
+    brace_count = 0
+    last_brace_count = brace_count
+
+    for item in xml:
+        any_active = let_active or if_active or while_active or do_active or return_active
+        
+        last_brace_count = brace_count
+
+        if item.text == '}': brace_count += 1
+        if item.text == '{': brace_count -= 1
+
+        if (item.text in loop_words and not any_active):
+            match item.text:
+                case 'let':
+                    let_active = True
+                    temp_state = ET.Element('temp')
+
+                case 'if':
+                    if_active = True
+                    temp_state = ET.Element('temp')
+
+                case 'else':
+                    if_active = True
+                    temp_state = ET.Element('temp')
+
+                case 'while':
+                    while_active = True
+                    temp_state = ET.Element('temp')
+
+                case 'do':
+                    do_active = True
+                    temp_state = ET.Element('temp')
+
+                case 'return':
+                    return_active = True
+                    temp_state = ET.Element('temp')
+
+        if let_active:
+            if item.text == ';':
+                let_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+                continue
+
+        if if_active:
+            if (brace_count == 0 and last_brace_count == 1):
+                if_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+                continue
+
+        if while_active:
+            if (brace_count == 0 and last_brace_count == 1):
+                while_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+                continue
+
+        if do_active:
+            if item.text == ';':
+                do_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+                continue
+
+        if return_active:
+            if item.text == ';':
+                return_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+
+        if (not(any_active)):
+                temp = ET.SubElement(sub_body, item.tag)
+                temp.text = item.text
+
+    sub_body.append(statementMaker(temp_state))
+    return sub_body
+
+def statementMaker(statements):
+    state_xml = ET.Element('statements')
+
+    for xml in statements:
+        print('new statement')
+        for item in xml:
+            print(item.tag, item.text)
+
+    return state_xml
+
 
 def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
