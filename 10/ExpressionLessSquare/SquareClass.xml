@@ -32,13 +32,42 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>let</keyword>
-            <keyword>let</keyword>
-            <keyword>let</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>x</identifier>
+                    <symbol>=</symbol>
+                    <identifier>Ax</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>y</identifier>
+                    <symbol>=</symbol>
+                    <identifier>Ay</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>size</identifier>
+                    <symbol>=</symbol>
+                    <identifier>Asize</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>draw</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <identifier>x</identifier>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -47,10 +76,23 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Memory</identifier>
+                    <symbol>.</symbol>
+                    <identifier>deAlloc</identifier>
+                    <symbol>(</symbol>
+                    <keyword>this</keyword>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -59,11 +101,39 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>do</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Screen</identifier>
+                    <symbol>.</symbol>
+                    <identifier>setColor</identifier>
+                    <symbol>(</symbol>
+                    <identifier>x</identifier>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Screen</identifier>
+                    <symbol>.</symbol>
+                    <identifier>drawRectangle</identifier>
+                    <symbol>(</symbol>
+                    <identifier>x</identifier>
+                    <symbol>,</symbol>
+                    <identifier>y</identifier>
+                    <symbol>,</symbol>
+                    <identifier>x</identifier>
+                    <symbol>,</symbol>
+                    <identifier>y</identifier>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -72,11 +142,39 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>do</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Screen</identifier>
+                    <symbol>.</symbol>
+                    <identifier>setColor</identifier>
+                    <symbol>(</symbol>
+                    <identifier>x</identifier>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Screen</identifier>
+                    <symbol>.</symbol>
+                    <identifier>drawRectangle</identifier>
+                    <symbol>(</symbol>
+                    <identifier>x</identifier>
+                    <symbol>,</symbol>
+                    <identifier>y</identifier>
+                    <symbol>,</symbol>
+                    <identifier>x</identifier>
+                    <symbol>,</symbol>
+                    <identifier>y</identifier>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -85,8 +183,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -95,8 +191,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -105,8 +199,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -115,8 +207,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -125,8 +215,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -135,8 +223,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

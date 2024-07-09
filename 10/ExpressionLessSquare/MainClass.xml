@@ -19,12 +19,38 @@
             <identifier>SquareGame</identifier>
             <identifier>game</identifier>
             <symbol>;</symbol>
-            <keyword>let</keyword>
-            <keyword>do</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <identifier>game</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>run</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -37,8 +63,6 @@
             <keyword>boolean</keyword>
             <identifier>b</identifier>
             <symbol>;</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

@@ -21,11 +21,28 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>let</keyword>
-            <keyword>let</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>square</identifier>
+                    <symbol>=</symbol>
+                    <identifier>square</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>direction</identifier>
+                    <symbol>=</symbol>
+                    <identifier>direction</identifier>
+                    <symbol>;</symbol>
+                </letStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <identifier>square</identifier>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -34,11 +51,32 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>do</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Memory</identifier>
+                    <symbol>.</symbol>
+                    <identifier>deAlloc</identifier>
+                    <symbol>(</symbol>
+                    <identifier>square</identifier>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -47,8 +85,6 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>if</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
@@ -65,9 +101,6 @@
             <keyword>boolean</keyword>
             <identifier>exit</identifier>
             <symbol>;</symbol>
-            <keyword>let</keyword>
-            <keyword>while</keyword>
-            <statements/>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

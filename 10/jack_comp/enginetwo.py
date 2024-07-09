@@ -2,7 +2,7 @@ from re import sub
 #from sys import last_traceback
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-#import statement
+import statementEngine
 
 def classMaker(xml):
     class_tree = ET.Element('class')
@@ -196,27 +196,27 @@ def subroutineBody(xml):
             match item.text:
                 case 'let':
                     let_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('let')
 
                 case 'if':
                     if_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('if')
 
                 case 'else':
                     if_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('else')
 
                 case 'while':
                     while_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('while')
 
                 case 'do':
                     do_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('do')
 
                 case 'return':
                     return_active = True
-                    temp_state = ET.Element('temp')
+                    temp_state = ET.Element('return')
 
         if let_active:
             if item.text == ';':
@@ -225,6 +225,10 @@ def subroutineBody(xml):
                 temp.text = item.text
                 statements.append(temp_state)
                 continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                
 
         if if_active:
             if (brace_count == 0 and last_brace_count == 1):
@@ -233,6 +237,9 @@ def subroutineBody(xml):
                 temp.text = item.text
                 statements.append(temp_state)
                 continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
 
         if while_active:
             if (brace_count == 0 and last_brace_count == 1):
@@ -241,6 +248,9 @@ def subroutineBody(xml):
                 temp.text = item.text
                 statements.append(temp_state)
                 continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
 
         if do_active:
             if item.text == ';':
@@ -249,6 +259,9 @@ def subroutineBody(xml):
                 temp.text = item.text
                 statements.append(temp_state)
                 continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
 
         if return_active:
             if item.text == ';':
@@ -256,21 +269,38 @@ def subroutineBody(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 statements.append(temp_state)
+                sub_body.append(statementMaker(statements))
+                continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
 
-        if (not(any_active)):
+        if (not(any_active) and not(item.text in loop_words)):
                 temp = ET.SubElement(sub_body, item.tag)
                 temp.text = item.text
 
-    sub_body.append(statementMaker(temp_state))
     return sub_body
 
 def statementMaker(statements):
     state_xml = ET.Element('statements')
 
     for xml in statements:
-        print('new statement')
-        for item in xml:
-            print(item.tag, item.text)
+        check = xml[0].text
+        print(check)
+        
+        match check:
+            case 'let':
+                state_xml.append(statementEngine.let_state(xml))
+            case 'if':
+                state_xml.append(statementEngine.if_state(xml))
+            case 'while':
+                state_xml.append(statementEngine.while_state(xml))
+            case 'do':
+                state_xml.append(statementEngine.do_state(xml))
+            case 'return':
+                state_xml.append(statementEngine.return_state(xml))
+            case _:
+                print('errrrror')
 
     return state_xml
 
