@@ -16,6 +16,9 @@
         <symbol>;</symbol>
     </classVarDec>
     <subroutineDec>
+        <keyword>constructor</keyword>
+        <identifier>SquareGame</identifier>
+        <identifier>new</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -26,19 +29,25 @@
                     <keyword>let</keyword>
                     <identifier>square</identifier>
                     <symbol>=</symbol>
-                    <identifier>square</identifier>
+                    <expression>
+                        <identifier>square</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <letStatement>
                     <keyword>let</keyword>
                     <identifier>direction</identifier>
                     <symbol>=</symbol>
-                    <identifier>direction</identifier>
+                    <expression>
+                        <identifier>direction</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <returnStatement>
                     <keyword>return</keyword>
-                    <identifier>square</identifier>
+                    <expression>
+                        <identifier>square</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -46,6 +55,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>dispose</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -73,6 +85,7 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -80,6 +93,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>moveSquare</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -88,6 +104,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>run</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>

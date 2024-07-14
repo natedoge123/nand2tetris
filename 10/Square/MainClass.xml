@@ -10,6 +10,9 @@
         <symbol>;</symbol>
     </classVarDec>
     <subroutineDec>
+        <keyword>function</keyword>
+        <keyword>void</keyword>
+        <identifier>main</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -19,14 +22,48 @@
             <identifier>SquareGame</identifier>
             <identifier>game</identifier>
             <symbol>;</symbol>
-            <keyword>let</keyword>
-            <keyword>do</keyword>
-            <keyword>do</keyword>
-            <keyword>return</keyword>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <identifier>SquareGame</identifier>
+                    <symbol>.</symbol>
+                    <identifier>new</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>run</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
+            </statements>
             <symbol>}</symbol>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>function</keyword>
+        <keyword>void</keyword>
+        <identifier>more</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -46,7 +83,6 @@
             <identifier>Array</identifier>
             <identifier>a</identifier>
             <symbol>;</symbol>
-            <keyword>if</keyword>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

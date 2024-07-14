@@ -18,6 +18,9 @@
         <symbol>;</symbol>
     </classVarDec>
     <subroutineDec>
+        <keyword>constructor</keyword>
+        <identifier>Square</identifier>
+        <identifier>new</identifier>
         <symbol>(</symbol>
         <parameterList>
             <keyword>int</keyword>
@@ -37,21 +40,27 @@
                     <keyword>let</keyword>
                     <identifier>x</identifier>
                     <symbol>=</symbol>
-                    <identifier>Ax</identifier>
+                    <expression>
+                        <identifier>Ax</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <letStatement>
                     <keyword>let</keyword>
                     <identifier>y</identifier>
                     <symbol>=</symbol>
-                    <identifier>Ay</identifier>
+                    <expression>
+                        <identifier>Ay</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <letStatement>
                     <keyword>let</keyword>
                     <identifier>size</identifier>
                     <symbol>=</symbol>
-                    <identifier>Asize</identifier>
+                    <expression>
+                        <identifier>Asize</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <doStatement>
@@ -63,7 +72,9 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
-                    <identifier>x</identifier>
+                    <expression>
+                        <identifier>x</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -71,6 +82,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>dispose</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -89,6 +103,7 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -96,6 +111,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>draw</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -130,6 +148,7 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -137,6 +156,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>erase</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -171,6 +193,7 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -178,6 +201,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>incSize</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -186,6 +212,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>decSize</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -194,6 +223,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>moveUp</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -202,6 +234,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>moveDown</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -210,6 +245,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>moveLeft</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -218,6 +256,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>method</keyword>
+        <keyword>void</keyword>
+        <identifier>moveRight</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>

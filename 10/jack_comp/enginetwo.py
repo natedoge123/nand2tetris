@@ -77,7 +77,7 @@ def classVarDecFinder(xml):
 
 def subrountineFinder(xml):
     xml_list = []
-    temp_xml = ET.Element('subroutineDec')
+    temp_xml = ET.Element('temp')
     sub_active = False
 
     brace_count = 0
@@ -166,6 +166,10 @@ def subroutineDecBuilder(xml):
             temp.text = item.text
             temp_xml.append(subroutineBody(body_list))
             continue
+
+        if not(para_active or body_active):
+            temp = ET.SubElement(temp_xml, item.tag)
+            temp.text = item.text
 
     return temp_xml
 

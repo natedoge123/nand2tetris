@@ -10,6 +10,9 @@
         <symbol>;</symbol>
     </classVarDec>
     <subroutineDec>
+        <keyword>function</keyword>
+        <keyword>void</keyword>
+        <identifier>main</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
@@ -24,7 +27,9 @@
                     <keyword>let</keyword>
                     <identifier>game</identifier>
                     <symbol>=</symbol>
-                    <identifier>game</identifier>
+                    <expression>
+                        <identifier>game</identifier>
+                    </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <doStatement>
@@ -47,6 +52,7 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -54,6 +60,9 @@
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
+        <keyword>function</keyword>
+        <keyword>void</keyword>
+        <identifier>more</identifier>
         <symbol>(</symbol>
         <parameterList/>
         <symbol>)</symbol>
