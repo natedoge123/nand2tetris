@@ -28,7 +28,9 @@
                     <identifier>game</identifier>
                     <symbol>=</symbol>
                     <expression>
-                        <identifier>game</identifier>
+                        <term>
+                            <identifier>game</identifier>
+                        </term>
                     </expression>
                     <symbol>;</symbol>
                 </letStatement>
@@ -38,6 +40,7 @@
                     <symbol>.</symbol>
                     <identifier>run</identifier>
                     <symbol>(</symbol>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -47,6 +50,7 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>

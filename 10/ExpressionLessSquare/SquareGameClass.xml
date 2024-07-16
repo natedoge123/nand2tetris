@@ -30,7 +30,9 @@
                     <identifier>square</identifier>
                     <symbol>=</symbol>
                     <expression>
-                        <identifier>square</identifier>
+                        <term>
+                            <identifier>square</identifier>
+                        </term>
                     </expression>
                     <symbol>;</symbol>
                 </letStatement>
@@ -39,14 +41,18 @@
                     <identifier>direction</identifier>
                     <symbol>=</symbol>
                     <expression>
-                        <identifier>direction</identifier>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
                     </expression>
                     <symbol>;</symbol>
                 </letStatement>
                 <returnStatement>
                     <keyword>return</keyword>
                     <expression>
-                        <identifier>square</identifier>
+                        <term>
+                            <identifier>square</identifier>
+                        </term>
                     </expression>
                     <symbol>;</symbol>
                 </returnStatement>
@@ -70,6 +76,7 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -79,7 +86,7 @@
                     <symbol>.</symbol>
                     <identifier>deAlloc</identifier>
                     <symbol>(</symbol>
-                    <identifier>square</identifier>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>

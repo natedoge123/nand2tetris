@@ -43,8 +43,6 @@ def classMaker(xml):
             temp = ET.SubElement(class_tree, item.tag)
             temp.text = item.text
 
-
-    #print(xmlPrint(class_tree))
     return class_tree
 
 def classVarDecFinder(xml):
