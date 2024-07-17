@@ -168,8 +168,6 @@ def return_state(xml):
 def expression(xml):
     exp = ET.Element('expression')
 
-    print(enginetwo.xmlPrint(xml))
-
     for item in xml:
         if item.tag == 'identifier':
             term = ET.SubElement(exp, 'term')
@@ -181,9 +179,12 @@ def expression(xml):
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
     exp = ET.Element('exp')
+    #print(enginetwo.xmlPrint(xml))
 
     for item in xml:
-        if (item.text == ','):
+        if (item.text == ',' or item.text == ';'):
+            temp = ET.SubElement(exp, item.tag)
+            temp.text = item.text
             exp_list.append(expression(exp))
             exp = ET.Element('exp')
         else:

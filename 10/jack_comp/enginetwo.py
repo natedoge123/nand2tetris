@@ -288,7 +288,8 @@ def statementMaker(statements):
 
     for xml in statements:
         check = xml[0].text
-        print(check)
+        print(xmlPrint(xml))
+        #print(check)
         
         match check:
             case 'let':
