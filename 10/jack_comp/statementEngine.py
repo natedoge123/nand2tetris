@@ -26,49 +26,58 @@ def let_state(xml):
     return stt
 
 def if_state(xml):
+    print(enginetwo.xmlPrint(xml))
     stt = ET.Element('ifStatement')
     exp_xml = ET.Element('exp')
     state_xml = ET.Element('state')
 
-    exp_act = False
-    state_act = False
+    exp_act = False #Expresion Active
+    exp_done = False
+    state_act = False #Statment Active
 
     para_count = 0
     last_para_count = para_count
+
     brace_count = 0
     last_brace_count = brace_count
 
-
     for item in xml:
         last_para_count = para_count
+        if (item.text == '('):  para_count += 1
+        if (item.text == ')'):  para_count -= 1
+
         last_brace_count = brace_count
+        if (item.text == '{'):  brace_count += 1
+        if (item.text == '}'):  brace_count -= 1
 
-        if(item.text == '('): para_count += 1
-        if(item.text == ')'): para_count -= 1
-        if (para_count >= 1) and (last_para_count == 0):
+        if ((para_count == 0) and (last_para_count == 0) and not(exp_done)):
             exp_act = True
-            exp_xml = ET.Element('exp')
 
-        if (para_count == 0) and (last_para_count >= 1): exp_act = False
+        if ((exp_act) and (para_count == 0) and (last_para_count == 1)):
+            exp_act = False
+            exp_done = True
+            stt.append(expression(exp_xml))
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
 
-        if(item.text == '{'): brace_count += 1
-        if(item.text == '}'): brace_count -= 1
-        if (brace_count >= 1) and (last_brace_count == 0): state_act = True
-        if (brace_count == 0) and (last_brace_count >= 1): state_act = False
+        if ((brace_count == 0) and (last_brace_count == 1)):
+            state_act = False
+            print(enginetwo.xmlPrint(state_xml))
 
         if (exp_act):
             temp = ET.SubElement(exp_xml, item.tag)
             temp.text = item.text
+            continue
 
         if (state_act):
             temp = ET.SubElement(state_xml, item.tag)
             temp.text = item.text
+            continue
 
-        if (para_count == 0) and (last_para_count >= 1):
-            stt.append(expression(exp_xml))
-
-        if (para_count == 0) and (last_para_count >= 1):
-            stt.append(enginetwo.statementMaker(state_xml))
+        if not(state_act or exp_act):
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
+            continue
 
     return stt
 
@@ -179,11 +188,10 @@ def expression(xml):
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
     exp = ET.Element('exp')
-    #print(enginetwo.xmlPrint(xml))
 
     for item in xml:
         if (item.text == ',' or item.text == ';'):
-            temp = ET.SubElement(exp, item.tag)
+            temp = ET.SubElement(exp_list, item.tag)
             temp.text = item.text
             exp_list.append(expression(exp))
             exp = ET.Element('exp')

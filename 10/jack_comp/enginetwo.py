@@ -206,7 +206,6 @@ def subroutineBody(xml):
 
                 case 'else':
                     if_active = True
-                    temp_state = ET.Element('else')
 
                 case 'while':
                     while_active = True
@@ -231,13 +230,13 @@ def subroutineBody(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 
-
         if if_active:
-            if (brace_count == 0 and last_brace_count == 1):
+            if (brace_count == 0 and item.text == '}'):
                 if_active = False
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 statements.append(temp_state)
+                sub_body.append(statementMaker(statements))
                 continue
             else:
                 temp = ET.SubElement(temp_state, item.tag)
@@ -249,6 +248,7 @@ def subroutineBody(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 statements.append(temp_state)
+                sub_body.append(statementMaker(statements))
                 continue
             else:
                 temp = ET.SubElement(temp_state, item.tag)
@@ -260,6 +260,7 @@ def subroutineBody(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 statements.append(temp_state)
+                sub_body.append(statementMaker(statements))
                 continue
             else:
                 temp = ET.SubElement(temp_state, item.tag)
@@ -288,8 +289,6 @@ def statementMaker(statements):
 
     for xml in statements:
         check = xml[0].text
-        print(xmlPrint(xml))
-        #print(check)
         
         match check:
             case 'let':
