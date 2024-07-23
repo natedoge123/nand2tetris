@@ -50,34 +50,19 @@ def if_state(xml):
         if (item.text == '{'):  brace_count += 1
         if (item.text == '}'):  brace_count -= 1
 
-        if ((para_count == 0) and (last_para_count == 0) and not(exp_done)):
+        if (para_count == 1 and last_para_count == 0):
             exp_act = True
 
-        if ((exp_act) and (para_count == 0) and (last_para_count == 1)):
+        if (para_count == 0 and last_para_count == 1):
             exp_act = False
             exp_done = True
-            stt.append(expression(exp_xml))
-            temp = ET.SubElement(stt, item.tag)
-            temp.text = item.text
 
-        if ((brace_count == 0) and (last_brace_count == 1)):
-            state_act = False
-            print(enginetwo.xmlPrint(state_xml))
-
-        if (exp_act):
-            temp = ET.SubElement(exp_xml, item.tag)
-            temp.text = item.text
             continue
 
-        if (state_act):
-            temp = ET.SubElement(state_xml, item.tag)
-            temp.text = item.text
-            continue
+        if ():
+        else:
 
-        if not(state_act or exp_act):
-            temp = ET.SubElement(stt, item.tag)
-            temp.text = item.text
-            continue
+
 
     return stt
 

@@ -44,6 +44,62 @@
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
+            </statements>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <expression>
+                        <term>
+                            <identifier>game</identifier>
+                        </term>
+                    </expression>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>run</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+            </statements>
+            <statements>
+                <letStatement>
+                    <keyword>let</keyword>
+                    <identifier>game</identifier>
+                    <symbol>=</symbol>
+                    <expression>
+                        <term>
+                            <identifier>game</identifier>
+                        </term>
+                    </expression>
+                    <symbol>;</symbol>
+                </letStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>game</identifier>
+                    <symbol>.</symbol>
+                    <identifier>run</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
                 <doStatement>
                     <keyword>do</keyword>
                     <identifier>game</identifier>
@@ -76,6 +132,25 @@
             <keyword>boolean</keyword>
             <identifier>b</identifier>
             <symbol>;</symbol>
+            <statements>
+                <ifStatement>
+                    <keyword>if</keyword>
+                    <expression>
+                        <term>
+                            <identifier>b</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <symbol>}</symbol>
+                    <keyword>else</keyword>
+                    <symbol>{</symbol>
+                    <symbol>}</symbol>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                </ifStatement>
+            </statements>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

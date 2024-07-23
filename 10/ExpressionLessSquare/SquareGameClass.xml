@@ -80,6 +80,40 @@
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
+            </statements>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>Memory</identifier>
+                    <symbol>.</symbol>
+                    <identifier>deAlloc</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
+            </statements>
+            <statements>
+                <doStatement>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>dispose</identifier>
+                    <symbol>(</symbol>
+                    <expressionList/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                </doStatement>
                 <doStatement>
                     <keyword>do</keyword>
                     <identifier>Memory</identifier>
@@ -108,6 +142,88 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
+            <statements>
+                <ifStatement>
+                    <keyword>if</keyword>
+                    <expression>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>moveUp</identifier>
+                    <expression/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                    <keyword>if</keyword>
+                    <expression>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>moveDown</identifier>
+                    <expression/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                    <keyword>if</keyword>
+                    <expression>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>moveLeft</identifier>
+                    <expression/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                    <keyword>if</keyword>
+                    <expression>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <keyword>do</keyword>
+                    <identifier>square</identifier>
+                    <symbol>.</symbol>
+                    <identifier>moveRight</identifier>
+                    <expression/>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                    <keyword>do</keyword>
+                    <identifier>Sys</identifier>
+                    <symbol>.</symbol>
+                    <identifier>wait</identifier>
+                    <expression>
+                        <term>
+                            <identifier>direction</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>;</symbol>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                    <symbol>}</symbol>
+                </ifStatement>
+            </statements>
         </subroutineBody>
     </subroutineDec>
     <subroutineDec>
