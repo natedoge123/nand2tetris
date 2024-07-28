@@ -104,6 +104,15 @@ def subrountineFinder(xml):
 
     return xml_list
 
+def varDec(xml):
+    var = ET.Element('varDec')
+
+    for item in xml:
+        temp = ET.SubElement(var, item.tag)
+        temp.text = item.text
+
+    return var
+
 def subroutineDecBuilder(xml):
     temp_xml = ET.Element('subroutineDec')
     para_list = ET.Element('parameterList')
@@ -285,6 +294,7 @@ def subroutineBody(xml):
     return sub_body
 
 def statementMaker(statements):
+    print(statements)
     state_xml = ET.Element('statements')
 
     for xml in statements:

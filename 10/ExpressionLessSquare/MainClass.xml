@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <class>
     <keyword>class</keyword>
     <identifier>Main</identifier>
@@ -135,6 +134,7 @@
             <statements>
                 <ifStatement>
                     <keyword>if</keyword>
+                    <symbol>(</symbol>
                     <expression>
                         <term>
                             <identifier>b</identifier>
@@ -142,9 +142,11 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
+                    <subroutineBody/>
                     <symbol>}</symbol>
                     <keyword>else</keyword>
                     <symbol>{</symbol>
+                    <subroutineBody/>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>

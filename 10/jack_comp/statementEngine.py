@@ -26,7 +26,7 @@ def let_state(xml):
     return stt
 
 def if_state(xml):
-    print(enginetwo.xmlPrint(xml))
+    #print(enginetwo.xmlPrint(xml))
     stt = ET.Element('ifStatement')
     exp_xml = ET.Element('exp')
     state_xml = ET.Element('state')
@@ -50,19 +50,51 @@ def if_state(xml):
         if (item.text == '{'):  brace_count += 1
         if (item.text == '}'):  brace_count -= 1
 
-        if (para_count == 1 and last_para_count == 0):
+        if ((para_count == 1 and last_para_count == 0) and not exp_done):
             exp_act = True
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
+            continue
 
-        if (para_count == 0 and last_para_count == 1):
+        if ((para_count == 0 and last_para_count == 1) and not exp_done):
             exp_act = False
             exp_done = True
+            stt.append(expression(exp_xml))
+
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
 
             continue
 
-        if ():
+        if (brace_count == 1 and last_brace_count == 0):
+            state_act = True
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
+            continue
+
+        if (brace_count == 0 and last_brace_count == 1):
+            state_act = False
+            stt.append(enginetwo.subroutineBody(state_xml))
+
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
+            continue
+
+        if (exp_act and not exp_done):
+            temp = ET.SubElement(exp_xml, item.tag)
+            temp.text = item.text
+
+        elif (exp_done and not state_act):
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
+
+        elif (exp_done and state_act):
+            temp = ET.SubElement(state_xml, item.tag)
+            temp.text = item.text
+
         else:
-
-
+            temp = ET.SubElement(stt, item.tag)
+            temp.text = item.text
 
     return stt
 
@@ -185,4 +217,3 @@ def expressionList(xml):
             temp.text = item.text
 
     return exp_list
-
