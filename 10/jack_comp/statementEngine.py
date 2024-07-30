@@ -191,6 +191,15 @@ def return_state(xml):
 
     return stt
 
+def var_state(xml):
+    stt = ET.Element('varDec')
+
+    for item in xml:
+        temp = ET.SubElement(stt, item.tag)
+        temp.text = item.text
+
+    return stt
+
 def expression(xml):
     exp = ET.Element('expression')
 

@@ -104,15 +104,6 @@ def subrountineFinder(xml):
 
     return xml_list
 
-def varDec(xml):
-    var = ET.Element('varDec')
-
-    for item in xml:
-        temp = ET.SubElement(var, item.tag)
-        temp.text = item.text
-
-    return var
-
 def subroutineDecBuilder(xml):
     temp_xml = ET.Element('subroutineDec')
     para_list = ET.Element('parameterList')
@@ -184,19 +175,20 @@ def subroutineBody(xml):
     sub_body = ET.Element('subroutineBody')
     temp_state = ET.Element('temp')
     statements = []
-    loop_words = ['let', 'if', 'else', 'while', 'do', 'return']
+    loop_words = ['let', 'if', 'else', 'while', 'do', 'return', 'var']
 
     let_active = False
     if_active = False
     while_active = False
     do_active = False
     return_active = False
+    var_active = False
 
     brace_count = 0
     last_brace_count = brace_count
 
     for item in xml:
-        any_active = let_active or if_active or while_active or do_active or return_active
+        any_active = let_active or if_active or while_active or do_active or return_active or var_active
         
         last_brace_count = brace_count
 
@@ -227,6 +219,10 @@ def subroutineBody(xml):
                 case 'return':
                     return_active = True
                     temp_state = ET.Element('return')
+
+                case 'var':
+                    var_active = True
+                    temp_state = ET.Element('var')
 
         if let_active:
             if item.text == ';':
@@ -287,6 +283,18 @@ def subroutineBody(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
 
+        if var_active:
+            if item.text == ';':
+                var_active = False
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+                sub_body.append(statementMaker(statements))
+                continue
+            else:
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+
         if (not(any_active) and not(item.text in loop_words)):
                 temp = ET.SubElement(sub_body, item.tag)
                 temp.text = item.text
@@ -311,6 +319,8 @@ def statementMaker(statements):
                 state_xml.append(statementEngine.do_state(xml))
             case 'return':
                 state_xml.append(statementEngine.return_state(xml))
+            case 'var':
+                state_xml.append(statementEngine.var_state(xml))
             case _:
                 print('errrrror')
 

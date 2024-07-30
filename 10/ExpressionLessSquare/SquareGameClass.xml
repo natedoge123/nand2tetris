@@ -424,14 +424,28 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
-            <keyword>var</keyword>
-            <keyword>char</keyword>
-            <identifier>key</identifier>
-            <symbol>;</symbol>
-            <keyword>var</keyword>
-            <keyword>boolean</keyword>
-            <identifier>exit</identifier>
-            <symbol>;</symbol>
+            <statements>
+                <varDec>
+                    <keyword>var</keyword>
+                    <keyword>char</keyword>
+                    <identifier>key</identifier>
+                    <symbol>;</symbol>
+                </varDec>
+            </statements>
+            <statements>
+                <varDec>
+                    <keyword>var</keyword>
+                    <keyword>char</keyword>
+                    <identifier>key</identifier>
+                    <symbol>;</symbol>
+                </varDec>
+                <varDec>
+                    <keyword>var</keyword>
+                    <keyword>boolean</keyword>
+                    <identifier>exit</identifier>
+                    <symbol>;</symbol>
+                </varDec>
+            </statements>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>
