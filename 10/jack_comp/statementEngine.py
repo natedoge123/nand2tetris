@@ -137,7 +137,8 @@ def while_state(xml):
             stt.append(expression(exp_xml))
 
         if (brace_count == 0) and (last_brace_count >= 1):
-            stt.append(enginetwo.statementMaker(state_xml))
+            print('')
+            #stt.append(enginetwo.statementMaker(state_xml))
 
     return stt
 
