@@ -175,6 +175,10 @@ def do_state(xml):
 def return_state(xml):
     stt = ET.Element('returnStatement')
     exp_xml = ET.Element('exp')
+    length_return = 0
+
+    for item in xml:
+        length_return += 1
 
     for item in xml:
         if not(item.text == 'return' or item.text == ';'):
@@ -182,9 +186,13 @@ def return_state(xml):
             temp.text = item.text
         
         elif(item.text == ';'):
-            stt.append(expression(exp_xml))
-            temp = ET.SubElement(stt, item.tag)
-            temp.text = item.text
+            if length_return == 2:
+                temp = ET.SubElement(stt, item.tag)
+                temp.text = item.text
+            else:
+                stt.append(expression(exp_xml))
+                temp = ET.SubElement(stt, item.tag)
+                temp.text = item.text
 
         else:
             temp = ET.SubElement(stt, item.tag)
