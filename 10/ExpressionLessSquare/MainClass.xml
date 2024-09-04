@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <class>
     <keyword>class</keyword>
     <identifier>Main</identifier>
@@ -18,89 +17,13 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
+            <varDec>
+                <keyword>var</keyword>
+                <identifier>SquareGame</identifier>
+                <identifier>game</identifier>
+                <symbol>;</symbol>
+            </varDec>
             <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <identifier>SquareGame</identifier>
-                    <identifier>game</identifier>
-                    <symbol>;</symbol>
-                </varDec>
-            </statements>
-            <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <identifier>SquareGame</identifier>
-                    <identifier>game</identifier>
-                    <symbol>;</symbol>
-                </varDec>
-                <letStatement>
-                    <keyword>let</keyword>
-                    <identifier>game</identifier>
-                    <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>game</identifier>
-                        </term>
-                    </expression>
-                    <symbol>;</symbol>
-                </letStatement>
-                <doStatement>
-                    <keyword>do</keyword>
-                    <identifier>game</identifier>
-                    <symbol>.</symbol>
-                    <identifier>run</identifier>
-                    <symbol>(</symbol>
-                    <expressionList/>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                </doStatement>
-            </statements>
-            <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <identifier>SquareGame</identifier>
-                    <identifier>game</identifier>
-                    <symbol>;</symbol>
-                </varDec>
-                <letStatement>
-                    <keyword>let</keyword>
-                    <identifier>game</identifier>
-                    <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>game</identifier>
-                        </term>
-                    </expression>
-                    <symbol>;</symbol>
-                </letStatement>
-                <doStatement>
-                    <keyword>do</keyword>
-                    <identifier>game</identifier>
-                    <symbol>.</symbol>
-                    <identifier>run</identifier>
-                    <symbol>(</symbol>
-                    <expressionList/>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                </doStatement>
-                <doStatement>
-                    <keyword>do</keyword>
-                    <identifier>game</identifier>
-                    <symbol>.</symbol>
-                    <identifier>dispose</identifier>
-                    <symbol>(</symbol>
-                    <expressionList/>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                </doStatement>
-            </statements>
-            <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <identifier>SquareGame</identifier>
-                    <identifier>game</identifier>
-                    <symbol>;</symbol>
-                </varDec>
                 <letStatement>
                     <keyword>let</keyword>
                     <identifier>game</identifier>
@@ -134,7 +57,6 @@
                 </doStatement>
                 <returnStatement>
                     <keyword>return</keyword>
-                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -150,21 +72,13 @@
         <symbol>)</symbol>
         <subroutineBody>
             <symbol>{</symbol>
+            <varDec>
+                <keyword>var</keyword>
+                <keyword>boolean</keyword>
+                <identifier>b</identifier>
+                <symbol>;</symbol>
+            </varDec>
             <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <keyword>boolean</keyword>
-                    <identifier>b</identifier>
-                    <symbol>;</symbol>
-                </varDec>
-            </statements>
-            <statements>
-                <varDec>
-                    <keyword>var</keyword>
-                    <keyword>boolean</keyword>
-                    <identifier>b</identifier>
-                    <symbol>;</symbol>
-                </varDec>
                 <ifStatement>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
@@ -181,11 +95,30 @@
                     <symbol>{</symbol>
                     <subroutineBody/>
                     <symbol>}</symbol>
-                    <keyword>return</keyword>
-                    <symbol>;</symbol>
+                </ifStatement>
+                <ifStatement>
+                    <keyword>if</keyword>
+                    <symbol>(</symbol>
+                    <expression>
+                        <term>
+                            <identifier>b</identifier>
+                        </term>
+                    </expression>
+                    <symbol>)</symbol>
+                    <symbol>{</symbol>
+                    <subroutineBody/>
+                    <symbol>}</symbol>
+                    <keyword>else</keyword>
+                    <symbol>{</symbol>
+                    <subroutineBody/>
                     <symbol>}</symbol>
                 </ifStatement>
+                <returnStatement>
+                    <keyword>return</keyword>
+                    <symbol>;</symbol>
+                </returnStatement>
             </statements>
+            <symbol>}</symbol>
         </subroutineBody>
     </subroutineDec>
     <symbol>}</symbol>

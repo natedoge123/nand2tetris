@@ -26,7 +26,7 @@ def let_state(xml):
     return stt
 
 def if_state(xml):
-    #print(enginetwo.xmlPrint(xml))
+    print(enginetwo.xmlPrint(xml))
     stt = ET.Element('ifStatement')
     exp_xml = ET.Element('exp')
     state_xml = ET.Element('state')
@@ -96,6 +96,8 @@ def if_state(xml):
             temp = ET.SubElement(stt, item.tag)
             temp.text = item.text
 
+    print("STT")
+    print(enginetwo.xmlPrint(stt))
     return stt
 
 def while_state(xml):
