@@ -162,7 +162,7 @@ def subroutineDecBuilder(xml):
         if (body_active and brace_count == 0 and last_brace_count == 1):
             temp = ET.SubElement(body_list, item.tag)
             temp.text = item.text
-            temp_xml.append(subroutineBody(body_list))
+            temp_xml.append(statement_finder(body_list))
             continue
 
         if not(para_active or body_active):
@@ -171,7 +171,17 @@ def subroutineDecBuilder(xml):
 
     return temp_xml
 
-def subroutineBody(xml):
+def subStatement_maker(xml):
+    temp = statement_finder(xml)
+
+    statement = ET.Element('statements')
+
+    for child in temp:
+        statement.append(child)
+
+    return statement
+
+def statement_finder(xml):
     sub_body = ET.Element('subroutineBody')
     temp_state = ET.Element('temp')
     statements = []
@@ -184,7 +194,6 @@ def subroutineBody(xml):
     do_active = False
     return_active = False
     var_active = False
-    var_present = False
 
     brace_count = 0
     last_brace_count = brace_count
@@ -263,7 +272,6 @@ def subroutineBody(xml):
                         if if_item.text == 'else':
                             else_active = True
                             if_active = False
-                            print('it is else')
                             continue
                 statements.append(temp_state)
                 continue
@@ -334,7 +342,10 @@ def subroutineBody(xml):
 def statementMaker(statements):
     state_xml = ET.Element('statements')
 
-    for xml in statements:
+    # remove duplicates that occur when there is if-else statement
+    no_dupe = remove_dup_keep_order(statements)
+
+    for xml in no_dupe:
         check = xml[0].text
         
         match check:
@@ -349,7 +360,7 @@ def statementMaker(statements):
             case 'return':
                 state_xml.append(statementEngine.return_state(xml))
             case _:
-                print('errrrror')
+                print('not a statement')
 
     return state_xml
 
@@ -357,4 +368,8 @@ def xmlPrint(xml):
     long_string = ET.tostring(xml, 'utf-8')
     indented = minidom.parseString(long_string)
     return indented.toprettyxml(indent="  ")
+
+def remove_dup_keep_order(items):
+    return list(dict.fromkeys(items))
+
 

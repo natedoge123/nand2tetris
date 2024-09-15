@@ -73,7 +73,9 @@
                     <keyword>do</keyword>
                     <identifier>draw</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression/>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -106,7 +108,13 @@
                     <symbol>.</symbol>
                     <identifier>deAlloc</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression>
+                            <term>
+                                <keyword>this</keyword>
+                            </term>
+                        </expression>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -134,7 +142,13 @@
                     <symbol>.</symbol>
                     <identifier>setColor</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression>
+                            <term>
+                                <identifier>x</identifier>
+                            </term>
+                        </expression>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -161,6 +175,11 @@
                         <expression>
                             <term>
                                 <identifier>x</identifier>
+                            </term>
+                        </expression>
+                        <expression>
+                            <term>
+                                <identifier>y</identifier>
                             </term>
                         </expression>
                     </expressionList>
@@ -191,7 +210,13 @@
                     <symbol>.</symbol>
                     <identifier>setColor</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression>
+                            <term>
+                                <identifier>x</identifier>
+                            </term>
+                        </expression>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -218,6 +243,11 @@
                         <expression>
                             <term>
                                 <identifier>x</identifier>
+                            </term>
+                        </expression>
+                        <expression>
+                            <term>
+                                <identifier>y</identifier>
                             </term>
                         </expression>
                     </expressionList>
@@ -252,13 +282,15 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
                                 <identifier>erase</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -274,7 +306,7 @@
                                 <symbol>;</symbol>
                             </letStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>
@@ -302,13 +334,15 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
                                 <identifier>erase</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -324,7 +358,7 @@
                                 <symbol>;</symbol>
                             </letStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>
@@ -352,7 +386,7 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -360,7 +394,13 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -389,6 +429,11 @@
                                             <identifier>x</identifier>
                                         </term>
                                     </expression>
+                                    <expression>
+                                        <term>
+                                            <identifier>y</identifier>
+                                        </term>
+                                    </expression>
                                 </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
@@ -410,12 +455,18 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>
@@ -443,7 +494,7 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -451,7 +502,13 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -480,6 +537,11 @@
                                             <identifier>x</identifier>
                                         </term>
                                     </expression>
+                                    <expression>
+                                        <term>
+                                            <identifier>y</identifier>
+                                        </term>
+                                    </expression>
                                 </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
@@ -501,12 +563,18 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>
@@ -534,7 +602,7 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -542,7 +610,13 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -571,6 +645,11 @@
                                             <identifier>x</identifier>
                                         </term>
                                     </expression>
+                                    <expression>
+                                        <term>
+                                            <identifier>y</identifier>
+                                        </term>
+                                    </expression>
                                 </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
@@ -592,12 +671,18 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>
@@ -625,7 +710,7 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -633,7 +718,13 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -662,6 +753,11 @@
                                             <identifier>x</identifier>
                                         </term>
                                     </expression>
+                                    <expression>
+                                        <term>
+                                            <identifier>y</identifier>
+                                        </term>
+                                    </expression>
                                 </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
@@ -683,12 +779,18 @@
                                 <symbol>.</symbol>
                                 <identifier>setColor</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression>
+                                        <term>
+                                            <identifier>x</identifier>
+                                        </term>
+                                    </expression>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>return</keyword>
                     <symbol>;</symbol>

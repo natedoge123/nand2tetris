@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <class>
     <keyword>class</keyword>
     <identifier>Main</identifier>
@@ -41,7 +42,9 @@
                     <symbol>.</symbol>
                     <identifier>run</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression/>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -51,7 +54,9 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression/>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -89,28 +94,11 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody/>
+                    <statements/>
                     <symbol>}</symbol>
                     <keyword>else</keyword>
                     <symbol>{</symbol>
-                    <subroutineBody/>
-                    <symbol>}</symbol>
-                </ifStatement>
-                <ifStatement>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>b</identifier>
-                        </term>
-                    </expression>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody/>
-                    <symbol>}</symbol>
-                    <keyword>else</keyword>
-                    <symbol>{</symbol>
-                    <subroutineBody/>
+                    <statements/>
                     <symbol>}</symbol>
                 </ifStatement>
                 <returnStatement>

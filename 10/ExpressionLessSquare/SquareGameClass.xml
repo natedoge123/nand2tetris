@@ -76,7 +76,9 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression/>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -86,7 +88,13 @@
                     <symbol>.</symbol>
                     <identifier>deAlloc</identifier>
                     <symbol>(</symbol>
-                    <expressionList/>
+                    <expressionList>
+                        <expression>
+                            <term>
+                                <identifier>square</identifier>
+                            </term>
+                        </expression>
+                    </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -118,16 +126,16 @@
                     </expression>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements/>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
                     <identifier>direction</identifier>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -135,19 +143,21 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
                     <identifier>direction</identifier>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -155,7 +165,9 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -165,19 +177,21 @@
                                 <symbol>.</symbol>
                                 <identifier>moveDown</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
                     <identifier>direction</identifier>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
-                    <subroutineBody>
+                    <statements>
                         <statements>
                             <doStatement>
                                 <keyword>do</keyword>
@@ -185,7 +199,9 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -195,7 +211,9 @@
                                 <symbol>.</symbol>
                                 <identifier>moveDown</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -205,357 +223,14 @@
                                 <symbol>.</symbol>
                                 <identifier>moveLeft</identifier>
                                 <symbol>(</symbol>
-                                <expressionList/>
+                                <expressionList>
+                                    <expression/>
+                                </expressionList>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
                         </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>do</keyword>
-                    <identifier>Sys</identifier>
-                    <symbol>.</symbol>
-                    <identifier>wait</identifier>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                    <keyword>return</keyword>
-                    <symbol>;</symbol>
-                </ifStatement>
-                <ifStatement>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>direction</identifier>
-                        </term>
-                    </expression>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements/>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveLeft</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>do</keyword>
-                    <identifier>Sys</identifier>
-                    <symbol>.</symbol>
-                    <identifier>wait</identifier>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                    <keyword>return</keyword>
-                    <symbol>;</symbol>
-                </ifStatement>
-                <ifStatement>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>direction</identifier>
-                        </term>
-                    </expression>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements/>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveLeft</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>do</keyword>
-                    <identifier>Sys</identifier>
-                    <symbol>.</symbol>
-                    <identifier>wait</identifier>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>;</symbol>
-                    <keyword>return</keyword>
-                    <symbol>;</symbol>
-                </ifStatement>
-                <ifStatement>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>direction</identifier>
-                        </term>
-                    </expression>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements/>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
-                    <symbol>}</symbol>
-                    <keyword>if</keyword>
-                    <symbol>(</symbol>
-                    <identifier>direction</identifier>
-                    <symbol>)</symbol>
-                    <symbol>{</symbol>
-                    <subroutineBody>
-                        <statements>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveUp</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveDown</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                            <doStatement>
-                                <keyword>do</keyword>
-                                <identifier>square</identifier>
-                                <symbol>.</symbol>
-                                <identifier>moveLeft</identifier>
-                                <symbol>(</symbol>
-                                <expressionList/>
-                                <symbol>)</symbol>
-                                <symbol>;</symbol>
-                            </doStatement>
-                        </statements>
-                    </subroutineBody>
+                    </statements>
                     <symbol>}</symbol>
                     <keyword>do</keyword>
                     <identifier>Sys</identifier>
