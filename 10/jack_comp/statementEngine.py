@@ -216,11 +216,6 @@ def expression(xml):
     for item in xml:
         count += 1
 
-    print(enginetwo.xmlPrint(xml), count, xml[0])
-
-    if (count == 1 and xml[0].text == '('):
-        return 
-
     exp = ET.Element('expression')
 
     for item in xml:
@@ -234,20 +229,41 @@ def expression(xml):
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
     exp = ET.Element('exp')
+    exp_array = []
+    para_count =0 
 
     for item in xml:
+
+        if (item.text == '('):
+            para_count += 1
+        if (item.text == ')'):
+            para_count -= 1
+
         if (item.text == ',' or item.text == ';'):
             temp = ET.SubElement(exp_list, item.tag)
             temp.text = item.text
-            exp_list.append(expression(exp))
+            exp_array.append(exp)
             exp = ET.Element('exp')
 
-        if (item.text == ')'):
-            exp_list.append(expression(exp))
+        elif (para_count == 0 and item.text == ')'):
+            exp_array.append(exp)
             exp = ET.Element('exp')
 
+        if (item.text == '('):
+            continue
         else:
             temp = ET.SubElement(exp, item.tag)
             temp.text = item.text
 
+    for item in pruneExpressionList(exp_array):
+        exp_list.append(item)
+
     return exp_list
+
+def pruneExpressionList(exps):
+    pruned = []
+
+    for item in exps:
+        print(enginetwo.xmlPrint(item))
+
+    return pruned
