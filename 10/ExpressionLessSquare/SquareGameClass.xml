@@ -29,31 +29,19 @@
                     <keyword>let</keyword>
                     <identifier>square</identifier>
                     <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>square</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>;</symbol>
                 </letStatement>
                 <letStatement>
                     <keyword>let</keyword>
                     <identifier>direction</identifier>
                     <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>direction</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>;</symbol>
                 </letStatement>
                 <returnStatement>
                     <keyword>return</keyword>
-                    <expression>
-                        <term>
-                            <identifier>square</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>;</symbol>
                 </returnStatement>
             </statements>
@@ -76,9 +64,7 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
-                    <expressionList>
-                        <expression/>
-                    </expressionList>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -89,11 +75,7 @@
                     <identifier>deAlloc</identifier>
                     <symbol>(</symbol>
                     <expressionList>
-                        <expression>
-                            <term>
-                                <identifier>square</identifier>
-                            </term>
-                        </expression>
+                        <expression/>
                     </expressionList>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
@@ -119,11 +101,7 @@
                 <ifStatement>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>direction</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
                     <statements>
@@ -143,9 +121,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -165,9 +141,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -177,9 +151,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveDown</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -199,9 +171,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveUp</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -211,9 +181,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveDown</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -223,9 +191,7 @@
                                 <symbol>.</symbol>
                                 <identifier>moveLeft</identifier>
                                 <symbol>(</symbol>
-                                <expressionList>
-                                    <expression/>
-                                </expressionList>
+                                <expressionList/>
                                 <symbol>)</symbol>
                                 <symbol>;</symbol>
                             </doStatement>
@@ -272,11 +238,7 @@
                     <keyword>let</keyword>
                     <identifier>exit</identifier>
                     <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>key</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>;</symbol>
                 </letStatement>
             </statements>

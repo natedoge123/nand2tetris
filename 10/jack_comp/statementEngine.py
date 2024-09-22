@@ -212,14 +212,14 @@ def var_state(xml):
     return stt
 
 def expression(xml):
-    count = 0
-    for item in xml:
-        count += 1
+    term_words = ['identifier', 'keyword']
+    op_symbols = ['+', '-', '*', '/', '&', '|', '<', '>', '=']
+    unaryop_symbol = ['-', '~']
 
     exp = ET.Element('expression')
 
     for item in xml:
-        if item.tag == 'identifier' or item.tag == 'keyword':
+        if ((item.text == 'identifier') or (item.text == 'keyword')):
             term = ET.SubElement(exp, 'term')
             temp = ET.SubElement(term, item.tag)
             temp.text = item.text
@@ -228,42 +228,33 @@ def expression(xml):
 
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
-    exp = ET.Element('exp')
-    exp_array = []
+    temp = ET.Element('temp')
     para_count =0 
+
+    count = 0
+
+    for item in xml:
+        count += 1
+
+    if count == 2:
+        return exp_list
 
     for item in xml:
 
-        if (item.text == '('):
-            para_count += 1
-        if (item.text == ')'):
-            para_count -= 1
+        if (item.text == '('): para_count += 1
+        if (item.text == ')'): para_count -= 1
 
-        if (item.text == ',' or item.text == ';'):
-            temp = ET.SubElement(exp_list, item.tag)
-            temp.text = item.text
-            exp_array.append(exp)
-            exp = ET.Element('exp')
+        if (para_count > 0):
+            if (item.text == ','):
+                exp_list.append(expression(temp))
+                exp_list.append(item)
+                temp = ET.Element('temp')
+            else:
+                temp = ET.SubElement(temp, item.tag)
+                temp.text = item.text
 
         elif (para_count == 0 and item.text == ')'):
-            exp_array.append(exp)
-            exp = ET.Element('exp')
-
-        if (item.text == '('):
-            continue
-        else:
-            temp = ET.SubElement(exp, item.tag)
-            temp.text = item.text
-
-    for item in pruneExpressionList(exp_array):
-        exp_list.append(item)
+            print(enginetwo.xmlPrint(temp))
+            exp_list.append(expression(temp))
 
     return exp_list
-
-def pruneExpressionList(exps):
-    pruned = []
-
-    for item in exps:
-        print(enginetwo.xmlPrint(item))
-
-    return pruned

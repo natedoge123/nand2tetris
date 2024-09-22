@@ -128,8 +128,7 @@
     <keyword> void </keyword>
     <identifier> draw </identifier>
     <symbol> ( </symbol>
-    <parameterList>
-    </parameterList>
+    <parameterList/>
     <symbol> ) </symbol>
     <subroutineBody>
       <symbol> { </symbol>

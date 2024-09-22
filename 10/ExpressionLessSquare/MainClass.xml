@@ -29,11 +29,7 @@
                     <keyword>let</keyword>
                     <identifier>game</identifier>
                     <symbol>=</symbol>
-                    <expression>
-                        <term>
-                            <identifier>game</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>;</symbol>
                 </letStatement>
                 <doStatement>
@@ -42,9 +38,7 @@
                     <symbol>.</symbol>
                     <identifier>run</identifier>
                     <symbol>(</symbol>
-                    <expressionList>
-                        <expression/>
-                    </expressionList>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -54,9 +48,7 @@
                     <symbol>.</symbol>
                     <identifier>dispose</identifier>
                     <symbol>(</symbol>
-                    <expressionList>
-                        <expression/>
-                    </expressionList>
+                    <expressionList/>
                     <symbol>)</symbol>
                     <symbol>;</symbol>
                 </doStatement>
@@ -87,11 +79,7 @@
                 <ifStatement>
                     <keyword>if</keyword>
                     <symbol>(</symbol>
-                    <expression>
-                        <term>
-                            <identifier>b</identifier>
-                        </term>
-                    </expression>
+                    <expression/>
                     <symbol>)</symbol>
                     <symbol>{</symbol>
                     <statements/>
