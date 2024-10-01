@@ -140,36 +140,78 @@ def while_state(xml):
 
     return stt
 
+#def do_state(xml):
+#    stt = ET.Element('doStatement')
+#    exp_xml = ET.Element('exp')
+#
+#    exp_act = False
+#
+#    para_count = 0
+#
+#    for item in xml:
+#
+#        if(item.text == '('): para_count += 1
+#        if(item.text == ')'): para_count -= 1
+#
+#        if (para_count >= 1) and (item.text == '('): exp_act = True
+#        if (para_count == 0) and (item.text == ')'): exp_act = False
+#
+#        print(exp_act, item.text)
+#
+#        if (exp_act and item.text != ','):
+#            temp = ET.SubElement(exp_xml, item.tag)
+#            temp.text = item.text
+#            continue
+#
+#        if (para_count == 0) and (item.text == ')' or item.text == ','):
+#            temp = ET.SubElement(exp_xml, item.tag)
+#            temp.text = item.text
+#            stt.append(expressionList(exp_xml))
+#            exp_xml = ET.Element('exp')
+#
+#        if not(exp_act) or item.text == '(':
+#            temp = ET.SubElement(stt, item.tag)
+#            temp.text = item.text
+#
+#    print(enginetwo.xmlPrint(xml))
+#    print(enginetwo.xmlPrint(stt))
+#    return stt
+
+
 def do_state(xml):
-
     stt = ET.Element('doStatement')
-    exp_xml = ET.Element('exp')
-
-    exp_act = False
-
+    exp_list_xml = ET.Element('ExpressionList')
+    
+    count = 0
     para_count = 0
     last_para_count = para_count
+    exp_act = False
 
     for item in xml:
         last_para_count = para_count
-
         if(item.text == '('): para_count += 1
         if(item.text == ')'): para_count -= 1
-        if (para_count >= 1) and (item.text == '('): exp_act = True
-        if (para_count == 0) and (item.text == ')'): exp_act = False
+
+        if (para_count > 0) and (item.text == '('): 
+            exp_act = True
+
+        if (para_count == 0) and (item.text == ')'):
+            exp_act = False
+            #if (count > 2):
+            stt.append(expressionList(exp_list_xml))
 
         if (exp_act):
-            temp = ET.SubElement(exp_xml, item.tag)
-            temp.text = item.text
-
-        if (para_count == 0) and (last_para_count >= 1):
-            temp = ET.SubElement(exp_xml, item.tag)
-            temp.text = item.text
-            stt.append(expressionList(exp_xml))
-
-        if not(exp_act) or item.text == '(':
+            if (last_para_count == 0 and item.text == '('):
+                temp = ET.SubElement(stt, item.tag)
+                temp.text = item.text
+                continue
+            else:
+                temp = ET.SubElement(exp_list_xml, item.tag)
+                temp.text = item.text
+        else:
             temp = ET.SubElement(stt, item.tag)
             temp.text = item.text
+
 
 
     return stt
@@ -211,25 +253,10 @@ def var_state(xml):
 
     return stt
 
-def expression(xml):
-    term_words = ['identifier', 'keyword']
-    op_symbols = ['+', '-', '*', '/', '&', '|', '<', '>', '=']
-    unaryop_symbol = ['-', '~']
-
-    exp = ET.Element('expression')
-
-    for item in xml:
-        if ((item.text == 'identifier') or (item.text == 'keyword')):
-            term = ET.SubElement(exp, 'term')
-            temp = ET.SubElement(term, item.tag)
-            temp.text = item.text
-
-    return exp
-
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
     temp = ET.Element('temp')
-    para_count =0 
+    para_count = 0 
 
     count = 0
 
@@ -254,7 +281,31 @@ def expressionList(xml):
                 temp.text = item.text
 
         elif (para_count == 0 and item.text == ')'):
-            print(enginetwo.xmlPrint(temp))
             exp_list.append(expression(temp))
 
     return exp_list
+
+def expression(xml):
+    op_symbols = ['+', '-', '*', '/', '&', '|', '<', '>', '=']
+    unaryop_symbol = ['-', '~']
+
+    exp = ET.Element('expression')
+
+    temp = ET.Element('temp')
+
+    for item in xml:
+        if (item.text not in op_symbols):
+            exp.append(term(item))
+        else:
+            continue
+
+    return exp
+
+def term(xml):
+    term = ET.Element('term')
+
+    temp = ET.SubElement(term, xml.tag)
+    temp.text = xml.text
+
+    return term
+
