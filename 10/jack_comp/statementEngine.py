@@ -140,44 +140,6 @@ def while_state(xml):
 
     return stt
 
-#def do_state(xml):
-#    stt = ET.Element('doStatement')
-#    exp_xml = ET.Element('exp')
-#
-#    exp_act = False
-#
-#    para_count = 0
-#
-#    for item in xml:
-#
-#        if(item.text == '('): para_count += 1
-#        if(item.text == ')'): para_count -= 1
-#
-#        if (para_count >= 1) and (item.text == '('): exp_act = True
-#        if (para_count == 0) and (item.text == ')'): exp_act = False
-#
-#        print(exp_act, item.text)
-#
-#        if (exp_act and item.text != ','):
-#            temp = ET.SubElement(exp_xml, item.tag)
-#            temp.text = item.text
-#            continue
-#
-#        if (para_count == 0) and (item.text == ')' or item.text == ','):
-#            temp = ET.SubElement(exp_xml, item.tag)
-#            temp.text = item.text
-#            stt.append(expressionList(exp_xml))
-#            exp_xml = ET.Element('exp')
-#
-#        if not(exp_act) or item.text == '(':
-#            temp = ET.SubElement(stt, item.tag)
-#            temp.text = item.text
-#
-#    print(enginetwo.xmlPrint(xml))
-#    print(enginetwo.xmlPrint(stt))
-#    return stt
-
-
 def do_state(xml):
     stt = ET.Element('doStatement')
     exp_list_xml = ET.Element('ExpressionList')
@@ -256,45 +218,40 @@ def var_state(xml):
 def expressionList(xml):
     exp_list = ET.Element('expressionList')
     temp = ET.Element('temp')
-    para_count = 0 
-
-    count = 0
-
+    
+    max_count = 0
     for item in xml:
-        count += 1
+        max_count += 1
 
-    if count == 2:
-        return exp_list
-
-    for item in xml:
-
-        if (item.text == '('): para_count += 1
-        if (item.text == ')'): para_count -= 1
-
-        if (para_count > 0):
+    if max_count == 1:
+        exp_list.append(expression(xml))
+    else:
+        count = 0
+        for item in xml:
+            count += 1
             if (item.text == ','):
                 exp_list.append(expression(temp))
                 exp_list.append(item)
                 temp = ET.Element('temp')
             else:
-                temp = ET.SubElement(temp, item.tag)
-                temp.text = item.text
-
-        elif (para_count == 0 and item.text == ')'):
-            exp_list.append(expression(temp))
+                temp.append(item)
+                if count == max_count:
+                    exp_list.append(expression(temp))
+                    
 
     return exp_list
 
 def expression(xml):
     op_symbols = ['+', '-', '*', '/', '&', '|', '<', '>', '=']
-    unaryop_symbol = ['-', '~']
+    unaryop_symbols = ['-', '~']
 
     exp = ET.Element('expression')
 
     temp = ET.Element('temp')
 
     for item in xml:
-        if (item.text not in op_symbols):
+        is_symbol = not(item in (op_symbols or unaryop_symbols))
+        if is_symbol:
             exp.append(term(item))
         else:
             continue
