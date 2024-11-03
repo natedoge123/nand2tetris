@@ -172,16 +172,21 @@ def subroutineDecBuilder(xml):
     return temp_xml
 
 def subStatement_maker(xml):
-    temp = statement_finder(xml)
+    count = 0
 
-    statement = ET.Element('statements')
+    for item in xml:
+        count += 1
 
-    for child in temp:
-        statement.append(child)
+    if count == 0:
+        return ET.Element('statements')
 
-    return statement
+    statement = statement_finder(xml)
 
-def statement_finder(xml):
+    return statement[0]
+
+
+
+def statement_finder(xml): 
     sub_body = ET.Element('subroutineBody')
     temp_state = ET.Element('temp')
     statements = []
