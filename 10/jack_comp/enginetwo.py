@@ -184,8 +184,6 @@ def subStatement_maker(xml):
 
     return statement[0]
 
-
-
 def statement_finder(xml): 
     sub_body = ET.Element('subroutineBody')
     temp_state = ET.Element('temp')
@@ -246,9 +244,11 @@ def statement_finder(xml):
                     var_active = True
                     temp_state = ET.Element('var')
 
-
         if (max_count == running_count):
+            print(xmlPrint(xml))
+            print(statements)
             sub_body.append(statementMaker(statements))
+            print(xmlPrint(sub_body))
 
         if (not(any_active) and not(item.text in loop_words)):
             temp = ET.SubElement(sub_body, item.tag)
@@ -292,7 +292,6 @@ def statement_finder(xml):
                 temp.text = item.text
                 statements.append(temp_state)
                 continue
-
             else:
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text

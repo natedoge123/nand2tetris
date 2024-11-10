@@ -174,8 +174,6 @@ def do_state(xml):
             temp = ET.SubElement(stt, item.tag)
             temp.text = item.text
 
-
-
     return stt
 
 def return_state(xml):
