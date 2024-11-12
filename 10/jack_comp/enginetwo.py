@@ -244,10 +244,18 @@ def statement_finder(xml):
                     var_active = True
                     temp_state = ET.Element('var')
 
+
         if (max_count == running_count):
-            print(xmlPrint(xml))
-            print(statements)
+
+            if (item.text == ';'):
+                temp = ET.SubElement(temp_state, item.tag)
+                temp.text = item.text
+                statements.append(temp_state)
+
             sub_body.append(statementMaker(statements))
+
+            print(statements)
+            print(xmlPrint(xml))
             print(xmlPrint(sub_body))
 
         if (not(any_active) and not(item.text in loop_words)):
@@ -278,6 +286,9 @@ def statement_finder(xml):
                             else_active = True
                             if_active = False
                             continue
+                    else:
+                        if_active = False
+
                 statements.append(temp_state)
                 continue
 
@@ -313,10 +324,12 @@ def statement_finder(xml):
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
                 statements.append(temp_state)
+                print(temp.tag, temp.text)
                 continue
             else:
                 temp = ET.SubElement(temp_state, item.tag)
                 temp.text = item.text
+                print(temp.tag, temp.text)
 
         if return_active:
             if item.text == ';':
